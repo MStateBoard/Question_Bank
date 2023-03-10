@@ -1,0 +1,238 @@
+﻿@model Question_Bank.Models.Tbl_Create_School_College
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<style>
+    .AppFormTable th {
+        background-color: steelblue;
+        text-align: center;
+        color: white;
+    }
+
+    #tbl_user td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="user">
+    <div class="container">
+        @Html.Hidden("UserID", TempData["User_ID"])
+        @Html.HiddenFor(model => model.ID)
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Index No :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Index_No, new { @class = "form-control", @placeholder = "Index No", @name = "Index_No", @required = "required", maxLength = 7 })
+                @Html.ValidationMessageFor(model => model.Index_No, "Enter Index No", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-3">
+                <label>Institute Name :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Institute_Name, new { @class = "form-control", @placeholder = "Institute Name", @name = "Institute_Name", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Institute_Name, "Enter Institute Name", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-3">
+                <label>User ID :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.User_ID, new { @class = "form-control", @placeholder = "User ID", @name = "User_ID", @required = "required" })
+                @Html.ValidationMessageFor(model => model.User_ID, "Enter User_ID", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-3">
+                <label>Name :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Name", @name = "Name", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Name, "Enter Name", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-3">
+                <label>Mobile No :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Mobile_No, new { @class = "form-control", @placeholder = "Mobile No", @name = "Mobile_No", @required = "required", maxLength = 10 })
+                @Html.ValidationMessageFor(model => model.Mobile_No, "Enter Mobile No", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-3">
+                <label>Address :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Address", @name = "Address", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Address, "Enter Address", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-3">
+                <label>Password :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @name = "Password", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Password, "Enter Password", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="col-sm-3">
+                <label>Email ID :</label><span style="color:Red">*</span>
+                @Html.TextBoxFor(model => model.Email_ID, new { @class = "form-control", @placeholder = "Email ID", @name = "Email_ID", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Email_ID, "Enter Email ID", new { @class = "text-danger" })
+            </div>
+
+        </div>
+    </div> <br><br>
+    <center>
+        <button type="button" class="btn btn-success" id="btn_submit">Submit</button>
+    </center>
+    <br>
+    <div class="row" style="border:inset 2px  #3eadcf"></div>
+    <br />
+    <table id="Tbl2" class="AppFormTable">
+
+        <tr>
+            <th align="left"><font size="2">User Information Data List</font></th>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sr.No.</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Institute Name</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">User ID</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Name</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Mobile No</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Email ID</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Address</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Password</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Edit</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_user"></tbody>
+                </table>
+                <br>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        debugger
+        Bind_Part();
+        $('#user').find("#ID").val(0);
+        $("#btn_submit").click(function (e) {
+            var formData = new FormData($(user)[0]);
+            console.log(formData);
+            $.ajax({
+                url: "../Admin/Edit",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    debugger;
+                    if (Data.Result) {
+                        Success_Alert(Data.Response);
+                        $(user)[0].reset();
+                        $('#user').find("#ID").val(0);
+                        Bind_Part();
+
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Message);
+                }
+
+            });
+        });
+
+    });
+
+
+    function Bind_Part() {
+        $.ajax({
+            url: "../Master/Get_Data",
+            type: "POST",
+            dataType: 'json',
+            data: {
+                User_ID: $("#UserID").val(),
+                Type: 1,
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (Data) {
+
+                var temp = "";
+                if (Data.Result) {
+                    $("#tbl_user").empty();
+                    $.each(Data.Response, function (i, data) {
+                        var editurl = "EditStudentInfo('/Master/Get_User_Record/" + data.ID + "')";
+                        var delurl = "DelStudentInfo('/Master/Delete_User_Record/" + data.ID + "')";
+                        temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Index_No + `</td><td>` + data.Institute_Name + `</td><td>` + data.User_ID + `</td><td>` + data.Name + `</td><td>` + data.Mobile_No + `</td><td>` + data.Email_ID + `</td><td>` + data.Address + `</td><td>` + data.Password + `</td><td>` + `<input type = "button" value = "Edit" onclick = ` + editurl + ` class="btn btn-warning"/>` + `</td><td>` + `<input type = "button" value = "Delete" onclick="` + delurl + `" class="btn btn-danger"/>` + `</td></tr>`;
+
+                    });
+                    $("#tbl_user").append(temp);
+
+                }
+
+            },
+            error: function (e1, e2, e3) {
+                alert(e1);
+            }
+        });
+    }
+
+    function EditStudentInfo(url) {
+        debugger
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (data) {
+                if (data.Result) {
+                    $('#User_ID').val(data.Response.User_ID);
+                    $('#Mobile_No').val(data.Response.Mobile_No);
+                    $('#Email_ID').val(data.Response.Email_ID);
+                    $('#Index_No').val(data.Response.Index_No);
+                    $('#Address').val(data.Response.Address);
+                    $('#Password').val(data.Response.Password);
+                    $('#Institute_Name').val(data.Response.Institute_Name);
+                    $('#Name').val(data.Response.Name);
+                    $('#user').find("#ID").val(data.Response.ID);
+
+                }
+            }
+        });
+    }
+
+    function DelStudentInfo(url) {
+        debugger
+        if (confirm('Are you sure want to delete this record ?') == true) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: function (data) {
+                    if (data.Result) {
+                        Bind_Part();
+                        $(user)[0].reset();
+                        Success_Alert(data.Response);
+                    }
+                    else {
+                        Error_Alert(data.Response);
+                    }
+                }
+            });
+        }
+    }
+
+</script>

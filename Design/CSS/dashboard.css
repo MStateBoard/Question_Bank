@@ -1,0 +1,105 @@
+﻿.dashboard_user-details {padding: 7px 0; background-color:#666;}
+.dashboard_user-details img {margin-right: 15px; width: 90px; height: 90px; float: left;}
+.dashboard_user-details .extra-details {font-size: 11px;}
+
+.dashboard_note {margin-bottom: 20px; padding: 10px; border: 1px solid #bbb; background-color: #f1f1f1; border-radius: 3px;}
+.dashboard_note h3 {margin-bottom: 10px;}
+.dashboard_note marquee {white-space: pre;}  
+
+.dashboard_user-profile {margin-bottom: 15px;}
+.dashboard_user-profile .profile-status {position: relative; margin-bottom: 15px; padding-right: 100px; color: #666;}
+.dashboard_user-profile .progress {margin-top: 8px; width: 100%; overflow: hidden; display: inline-block; border-radius: 5px; background-color: #f5f5f5;}
+.dashboard_user-profile .progress .bar {height: 18px; border: 1px solid #2e758a; font-size: 11px; line-height: 18px; text-align: center; color: #fff; background-color: #4BB1CF;}
+.dashboard_user-profile .profile-status a {position: absolute; top: 0; right: 0;}
+.dashboard_user-profile .profile-links {margin-bottom: 10px; list-style: none; border-bottom: 1px solid #ccc;}
+.dashboard_user-profile .profile-links li {width: 50%; float: left; background-color: #fafafa;}
+.dashboard_user-profile .profile-links li a {padding: 5px 10px 5px 30px; display: block; border: 1px solid #ccc; border-bottom: none; color: #666; background: transparent url(../images/bullet.png) no-repeat 12px 8px;}
+.dashboard_user-profile .profile-links li:nth-child(2n) a {border-left: none;}
+.dashboard_user-profile .action {text-align: center;}
+.dashboard_user-profile .btn {padding: 8px 18px; display: inline-block; clear: both; border: 1px solid #ccc; text-align: center; color: #555;
+background-color: #0081c2;
+background-image: -moz-linear-gradient(top, #f0f0f0, #d8d8d8);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f0f0f0), to(#d8d8d8));
+background-image: -webkit-linear-gradient(top, #f0f0f0, #d8d8d8);
+background-image: -o-linear-gradient(top, #f0f0f0, #d8d8d8);
+background-image: linear-gradient(to bottom, #f0f0f0, #d8d8d8);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0f0f0', endColorstr='#ffd8d8d8', GradientType=0);
+}
+.dashboard_user-profile .btn:hover {border-color: #C32525; text-decoration: none; color: #C32525;}
+
+.dashboard_user-extras .table-normal {margin-bottom: 10px; width: 100%; border: 1px solid #ccc; border-collapse: collapse;}
+.dashboard_user-extras .table-normal thead th {padding: 8px; border: 1px solid #ccc; font-size: 14px; font-weight: normal; color: #C32525; background-color: #f1f1f1;}
+.dashboard_user-extras .table-normal tbody td {padding: 5px 8px; color: #6B6568; border: 1px solid #ccc;}
+
+
+.AppFormTable_dashborad {
+width: 100%;
+padding: 6px 29px;
+font-size: 10px;
+
+letter-spacing: 0.04em;
+font-weight: bold;
+border: 0px solid #cccccc;
+background-color: #fafafa;
+color: rgb(89, 0, 51);
+border-collapse: collapse;
+border-width: 0 1px 1px 0;}
+
+
+
+.AppFormTable_dashborad td {
+border: 0px solid #cccccc;
+border-width: 1px 0 0 1px;
+padding: 9px;
+font-size: 11px; background-color:#fafafa; }
+
+.AppFormTable_dashborad th {
+font: 13px solid Verdana, Arial, Helvetica, sans-serif;
+font-weight: bold;
+color: #010408;
+border: 0px solid #cccccc;
+border-width: 1px 0 0 1px;
+padding: 13px;
+letter-spacing: 0.04em;
+background-color: #d5e5fa; }
+
+
+.important-text-dashboard   
+{
+  color: #000000;
+  float: left;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 5px 0 5px 10px;
+  width: 480px;   }
+  
+  .complete{    background-color:  #5CB85C;
+    border-color: #44A544;
+}
+
+.incomplete{    background-color: #D9332C;
+    border-color: #CA2B25;
+}
+
+ .logo-subtitle span {
+    margin-top: 3px;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #646464;
+}
+ .logo-subtitle {
+    margin: 0px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    line-height:25px;
+    font-weight: 600;
+    color: #383737;
+}
+  
+  #rightContainer_tblProfileStatus tr:first-child th{background-color: rgb(255, 222, 164);}
+
+  
+  

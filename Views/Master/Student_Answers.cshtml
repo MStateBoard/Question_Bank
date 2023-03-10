@@ -1,0 +1,288 @@
+﻿@model Question_Bank.Models.Exam_Report_Model
+@{
+    ViewBag.Title = "Student_Answers";
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    .AppFormTable th {
+        background-color: steelblue;
+        text-align: center;
+        color: white;
+    }
+
+    .AppFormTable td {
+        text-align: center;
+        color: black;
+    }
+</style>
+
+<h2 align="center">Exam Report</h2>
+<br>
+<h4 align="center" style="color:red">@TempData["Err"]</h4>
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<div class="container">
+    @using (Html.BeginForm("Student_Answers", "Master", FormMethod.Post))
+    {
+
+        <center>
+            <div class="row">
+                <div class="col-sm-6" style="padding-left:500px">
+                    <label>Enter Seat No :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Seat_No", "", new { @class = "form-control", @placeholder = "Seat No", maxLength = 7 })
+                </div>
+                <div class="col-2">
+                    <label></label><br />
+                    <input type="submit" class="btn btn-success" id="btn_submit" value="Submit" />
+                </div>
+            </div>
+        </center>
+
+        <br>
+    }
+    @if (Model._Question1 != null && Model._Question2 != null && Model._Question3 != null && Model._Question4 != null && Model._Question5 != null && Model._Question6 != null && Model._Question7 != null)
+    {
+        <h5 align="center">Question 1</h5>
+        <table id="tbl_q1" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question1)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer</td>
+                        <td>@item.Model_Answer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 align="center">Question 2</h5>
+        <table id="tbl_q2" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question2)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer</td>
+                        <td>@item.Model_Answer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 align="center">Question 3</h5>
+        <table id="tbl_q3" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question3)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer</td>
+                        <td>@item.Model_Answer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 align="center">Question 4</h5>
+        <table id="tbl_q4" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer1</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer2</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer1</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer2</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question4)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer1</td>
+                        <td>@item.Answer2</td>
+                        <td>@item.Model_Answer1</td>
+                        <td>@item.Model_Answer2</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 align="center">Question 5</h5>
+        <table id="tbl_q5" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer1</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer2</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer3</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer1</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer2</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer3</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question5)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer1</td>
+                        <td>@item.Answer2</td>
+                        <td>@item.Answer3</td>
+                        <td>@item.Model_Answer1</td>
+                        <td>@item.Model_Answer2</td>
+                        <td>@item.Model_Answer3</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 align="center">Question 6</h5>
+        <table id="tbl_q6" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question6)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer</td>
+                        <td>@item.Model_Answer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 align="center">Question 7</h5>
+        <table id="tbl_q7" class="AppFormTable">
+            <thead>
+                <tr>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Q.No.</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Paper ID</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sub Code</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:150%;">Question</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer</th>
+                    <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Model Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._Question7)
+                {
+                    <tr>
+                        <td>@item.Question_No</td>
+                        <td>@item.Index_No</td>
+                        <td>@item.Seat_No</td>
+                        <td>@item.Paper_No</td>
+                        <td>@item.Sub_Code</td>
+                        <td>@item.Question</td>
+                        <td>@item.Answer</td>
+                        <td>@item.Model_Answer</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

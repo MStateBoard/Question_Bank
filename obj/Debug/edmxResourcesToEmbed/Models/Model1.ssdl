@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Question_Bank_2022Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tbl_Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Create_School_College">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Institute_Name" Type="nvarchar(max)" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email_ID" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Division">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Division" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Flag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" />
+    <Property Name="Start_Time" Type="nvarchar" MaxLength="50" />
+    <Property Name="End_Time" Type="nvarchar" MaxLength="50" />
+    <Property Name="Total_Exam_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_Question_Data">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="Class" Type="nvarchar(max)" />
+    <Property Name="Subject" Type="nvarchar(max)" />
+    <Property Name="Topic" Type="nvarchar(max)" />
+    <Property Name="Question_Type" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Option1" Type="nvarchar(max)" />
+    <Property Name="Option2" Type="nvarchar(max)" />
+    <Property Name="Option3" Type="nvarchar(max)" />
+    <Property Name="Option4" Type="nvarchar(max)" />
+    <Property Name="Option5" Type="nvarchar(max)" />
+    <Property Name="Option6" Type="nvarchar(max)" />
+    <Property Name="Answer1" Type="varchar(max)" />
+    <Property Name="Answer2" Type="nvarchar(max)" />
+    <Property Name="Answer3" Type="nvarchar(max)" />
+    <Property Name="Marks" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question_Paper">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="Class" Type="nvarchar(max)" />
+    <Property Name="Subject" Type="nvarchar(max)" />
+    <Property Name="Topic" Type="nvarchar(max)" />
+    <Property Name="Question_ID" Type="int" Nullable="false" />
+    <Property Name="Question_Type" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Option1" Type="nvarchar(max)" />
+    <Property Name="Option2" Type="nvarchar(max)" />
+    <Property Name="Option3" Type="nvarchar(max)" />
+    <Property Name="Option4" Type="nvarchar(max)" />
+    <Property Name="Option5" Type="nvarchar(max)" />
+    <Property Name="Option6" Type="nvarchar(max)" />
+    <Property Name="Marks" Type="nvarchar(max)" />
+    <Property Name="Paper_Name" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="varchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+    <Property Name="Index_No" Type="varchar" MaxLength="7" />
+    <Property Name="Paper_No" Type="varchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question2">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="varchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sub_Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Paper_No" Type="nvarchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question3">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="varchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="varchar" MaxLength="7" />
+    <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+    <Property Name="Index_No" Type="varchar" MaxLength="7" />
+    <Property Name="Paper_No" Type="varchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="varchar(max)" />
+    <Property Name="Answer" Type="varchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question4">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Sub_Code" Type="nvarchar" MaxLength="2" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Paper_No" Type="nvarchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Answer1" Type="nvarchar(max)" />
+    <Property Name="Answer2" Type="nvarchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer1" Type="nvarchar(max)" />
+    <Property Name="Model_Answer2" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question5">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Sub_Code" Type="nvarchar" MaxLength="2" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Paper_No" Type="nvarchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Answer1" Type="nvarchar(max)" />
+    <Property Name="Answer2" Type="nvarchar(max)" />
+    <Property Name="Answer3" Type="nvarchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer1" Type="nvarchar(max)" />
+    <Property Name="Model_Answer2" Type="nvarchar(max)" />
+    <Property Name="Model_Answer3" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question6">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="varchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="varchar" MaxLength="7" />
+    <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+    <Property Name="Index_No" Type="varchar" MaxLength="7" />
+    <Property Name="Paper_No" Type="varchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Question7">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="varchar(max)" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="varchar" MaxLength="7" />
+    <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+    <Property Name="Index_No" Type="varchar" MaxLength="7" />
+    <Property Name="Paper_No" Type="varchar(max)" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="Question_No" Type="nvarchar(max)" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="Correct_Answer" Type="nvarchar(max)" />
+    <Property Name="Model_Answer" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Student">
+    <Key>
+      <PropertyRef Name="Seat_No" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IP_Address" Type="nvarchar(max)" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Division_ID" Type="int" />
+    <Property Name="GR_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Mobile_No" Type="float" />
+    <Property Name="Email_ID" Type="nvarchar(max)" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Student_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="IPAddress" Type="nvarchar(max)" />
+    <Property Name="Record_ID" Type="int" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Division_ID" Type="int" />
+    <Property Name="Year_ID" Type="int" />
+    <Property Name="GR_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="Active" Type="int" />
+  </EntityType>
+  <EntityType Name="Tbl_Student_Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="User_ID" Type="nvarchar(max)" />
+    <Property Name="Seat_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Stream" Type="nvarchar(max)" />
+    <Property Name="Paper_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sub_Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Batch" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Student_Login_Details">
+    <Key>
+      <PropertyRef Name="Seat_No" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Seat_No" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Exam_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Login_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_Subject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+    <Property Name="Class" Type="nvarchar" MaxLength="2" />
+    <Property Name="Subject" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Year">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="Question_Bank_2022ModelStoreContainer">
+    <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Create_School_College" EntityType="Self.Tbl_Create_School_College" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Division" EntityType="Self.Tbl_Division" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Flag" EntityType="Self.Tbl_Flag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question_Data" EntityType="Self.Tbl_Question_Data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question_Paper" EntityType="Self.Tbl_Question_Paper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question1" EntityType="Self.Tbl_Question1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question2" EntityType="Self.Tbl_Question2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question3" EntityType="Self.Tbl_Question3" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question4" EntityType="Self.Tbl_Question4" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question5" EntityType="Self.Tbl_Question5" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question6" EntityType="Self.Tbl_Question6" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Question7" EntityType="Self.Tbl_Question7" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Student_Details" EntityType="Self.Tbl_Student_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Student_Login" EntityType="Self.Tbl_Student_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Student_Login_Details" EntityType="Self.Tbl_Student_Login_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Year" EntityType="Self.Tbl_Year" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

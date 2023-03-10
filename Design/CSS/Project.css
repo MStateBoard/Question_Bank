@@ -1,0 +1,92 @@
+﻿body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+/* Table Design*/
+.AppFormTable {
+    width: 100%;
+    padding: 0 5px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+    .AppFormTable th {
+        font-size: 14px;
+        font-weight: 500;
+        color: #3d4348;
+        padding: 10px;
+        letter-spacing: 0.04em;
+        background-color: #dff0f3;
+        /* border-top-left-radius: 5px;
+	border-top-right-radius: 5px; */
+        border-color: #bcd5ec;
+    }
+
+    .AppFormTable .head {
+        font-size: 12px;
+        font-weight: bold;
+        color: #000000;
+        border: 0px solid #F0F0F0;
+        letter-spacing: 0.04em;
+        border-width: 1px 0 0 1px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .AppFormTable td {
+        color: #000000;
+        border: 1px solid #d0e1f1;
+        /*padding: 10px;*/
+        padding: 5px;
+        font-size: 14px !important;
+    }
+
+   
+
+        .AppFormTable input[type=checkbox] {
+            vertical-align: middle;
+        }
+
+        .AppFormTable input[type=image] {
+            vertical-align: middle;
+            padding: 0px !important;
+        }
+
+    .AppFormTable select {
+        color: #000000;
+        border: 1px solid #d9d9d9;
+        font-size: 13px;
+        height: 31px;
+        padding: 3px;
+        border-radius: 4px;
+    }
+    .AppFormTable input {
+        color: black;
+        border: 1px solid #d9d9d9;
+        font-size: 13px;
+        height: 31px;
+        /*padding: 3px;
+        border-radius: 4px;*/
+    }
+.btn_submit {
+    background-color: #0f4f96;
+    border-radius: 30px;
+    padding: 0px 30px;
+    height: 30px;
+    color: white;
+}
+
+.Edit_Delete {
+    color: white !important;
+    background-color: #0f4f96;
+    font-weight: 800;
+    border-radius: 10px;     
+}
+a {
+    color: black;
+}

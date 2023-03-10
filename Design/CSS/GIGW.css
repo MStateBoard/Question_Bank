@@ -1,0 +1,118 @@
+﻿/*----------------------gigw top-nav start ----------------*/
+@media only screen and (max-width: 768px) {
+    .desktop-view {
+        border-left: 0px !important;
+        border-right: 0px !important;
+    }
+}
+.list-code {
+    display: inline-flex !important;
+    list-style: none !important;
+    margin-bottom: 0px;
+}
+
+.top-nav-height {
+    display: block;
+    padding: 3px 0px;
+}
+
+.guid-nav {
+    margin-top: 40px;
+}
+/*for top bar css*/
+.navbar-top {
+    background: #3070ae;
+    color: white !important;
+    z-index: 99999;
+}
+
+.search-form {
+    height: auto !important;
+}
+
+.navbar-top li {
+    margin-bottom: 0px !important;
+    padding: 0px 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-right: 1px solid #eed6ab;
+}
+
+@media screen and (max-width:425px) {
+    .navbar-top li {
+        padding: 0px 0px !important;
+    }
+
+    .navbar-top .nav-link {
+        padding: 0.5rem 0.5rem;
+    }
+}
+
+.navbar-top a {
+    color: white !important;
+}
+
+    .navbar-top a:hover {
+        color: rgba(255,255,255,1);
+    }
+
+.navbar-top .fa {
+    color: white;
+    margin-right: 8px;
+    font-size: 15px;
+}
+
+.navbar-top a.dropdown-item {
+    color: #333;
+}
+
+.dropdown-menu {
+    min-width: unset !important;
+}
+
+.search .dropdown-menu {
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.form-inline {
+    flex-flow: row !important;
+}
+
+.form-control {
+    border: 1px solid #B09EFA !important;
+}
+
+.btn-dark {
+    background: #6052b9 !important;
+    border: 0;
+    white-space: normal;
+    margin-top: -10px;
+}
+
+.show a {
+    color: black !important;
+}
+
+/*----------------------gigw top-nav end----------------*/
+/*----------------GIGW footer start------------*/
+.footer-top1 {
+    padding: 10px;
+    background: #3070ae;
+    color: white;
+}
+
+    .footer-top1 p {
+        color: white;
+    }
+
+.implinks-wrapper a {
+    color: white !important;
+}
+
+.footer-policy a {
+    color: white !important;
+}
+/*----------------GIGW footer End-------------*/

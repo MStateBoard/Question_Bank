@@ -1,0 +1,224 @@
+﻿@model Question_Bank.Models.Question_Bank_Model
+@{
+    ViewBag.Title = "Create_Question_Bank";
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+<style>
+    #ddlgrade1 {
+        width: 200px;
+        height: 35px;
+    }
+</style>
+
+<h2 align="center" style="font-family:'Times New Roman', Times, serif">Create Question Paper</h2>
+<center><h4><span style="color:green; font-family:'Times New Roman', Times, serif">@TempData["Temp"]</span></h4></center>
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer1" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:10%;">Type of Questions</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:10%;">Fill in the Blanks</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">True/False</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Single Correct</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Double Correct </th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Triple Correct</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Match the Following</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Rearrange</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Theory Question</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th align="center">
+                Selected Questions
+            </th>
+            <td align="center">
+                @ViewData["Que1"]
+            </td>
+            <td align="center">
+                @ViewData["Que2"]
+            </td>
+            <td align="center">
+                @ViewData["Que3"]
+            </td>
+            <td align="center">
+                @ViewData["Que4"]
+            </td>
+            <td align="center">
+                @ViewData["Que5"]
+            </td>
+            <td align="center">
+                @ViewData["Que6"]
+            </td>
+            <td align="center">
+                @ViewData["Que7"]
+            </td>
+            <td align="center">
+                @ViewData["Que8"]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-2">
+            <label>Select Class :</label><span style="color:Red">*</span><br>
+            @Html.DropDownListFor(model => model.Class, ViewBag.ClassList as SelectList, new { @class = "form-control form-select" })
+        </div>
+        <div class="col-lg-3">
+            <label>Select Subject :</label><span style="color:Red">*</span><br>
+            @Html.DropDownListFor(model => model.Subject, new SelectList(string.Empty, "Value", "Text"), "--Select Subject--", new { @class = "form-control form-select" })
+        </div>
+        <div class="col-sm-3">
+            <label>Select Question Type :</label><span style="color:Red">*</span>
+            @Html.DropDownListFor(model => model.Question_Type, new List<SelectListItem> {
+            new SelectListItem { Text = "--Select Type--", Value = "0"},
+            new SelectListItem{Text="Fill in the Blanks", Value="Fill in the Blanks"},
+            new SelectListItem{Text="True/False", Value="True/False"},
+            new SelectListItem{Text="Single Correct", Value="Single Correct"},
+            new SelectListItem{Text="Double Correct", Value="Double Correct"},
+            new SelectListItem{Text="Triple Correct", Value="Triple Correct"},
+            new SelectListItem{Text="Match the Following", Value="Match the Following"},
+            new SelectListItem{Text="Rearrange", Value="Rearrange"},
+            new SelectListItem{Text="Theory Question", Value="Theory Question"},
+            }, new { @class = "form-control form-select" })
+        </div>
+        <div class="col-lg-2">
+            <label></label><br>
+            <input type="button" class="btn btn-success" id="btn_submit" value="Submit" />
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+
+
+<form id="Form1" method="post" action="/Question/addQuestions">
+    <table id="Tbl2" class="AppFormTable">
+
+        <tr>
+            <th align="left"><font size="2">Question Bank Information</font></th>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sr.No.</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Select</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Subject</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Question Type</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:200%;">Question</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option1</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option2</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option3</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option4</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option5</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option6</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer1</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer2</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer3</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_user"></tbody>
+                </table>
+                <br>
+            </td>
+        </tr>
+
+    </table><br />
+    <div class="row">
+        <center style="width:80px">
+            <input type="submit" value="Submit" class="btn btn-success" />
+        </center>
+    </div>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#Subject").empty();
+        $("#Class").change(function () {
+            $("#Subject").empty();
+            $.ajax({
+                type: 'POST',
+                url: '../Question/Load_Subject',
+                dataType: 'json',
+                data: {
+                    Class: $("#Class").val()
+                },
+                success: function (Data) {
+                    for (var item in Data) {
+                        $("#Subject").append('<option value="' + Data[item].Value + '">' + Data[item].Text + '</option>');
+                    }
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        });
+
+        $("#btn_submit").click(function () {
+            var Class = $("#Class").val();
+            var Subject = $("#Subject").val();
+            var Question_Type = $("#Question_Type").val();
+            $.ajax({
+                url: "../Question/Create_Question_Bank",
+                type: "POST",
+                data: {
+                    Class: $("#Class").val(),
+                    Subject: $("#Subject").val(),
+                    Question_Type: $("#Question_Type").val(),
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    var temp = "";
+                    if (Data.Result) {
+                        $("#tbl_user").empty();
+                        debugger
+                        $.each(Data.Response, function (i, data) {
+                            temp += `<tr><td>` + (i + 1) + `</td><td><input type="checkbox" id="Chk" name="Chk" value=` + data.ID + `></td><td>` + data.Subject + `</td><td>` + data.Question_Type + `</td><td>` + data.Question + `</td><td>` + data.Option1 + `</td><td>` + data.Option2 + `</td><td>` + data.Option3 + `</td><td>` + data.Option4 + `</td><td>` + data.Option5 + `</td><td>` + data.Option6 + `</td><td>` + data.Answer1 + `</td><td>` + data.Answer2 + `</td><td>` + data.Answer3 + `</td></tr>`;
+                           
+                        });
+                      
+                        if (temp == "") {
+
+                            Error_Alert(`You Have Submitted all Questions of Class ` + Class + `, Subject ` + Subject + `, In ` + Question_Type + ` Catagory! Please Add Questions!`);
+                        }
+                        $("#tbl_user").append(temp);
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(e1);
+                }
+
+            });
+        });
+
+    });
+
+</script>

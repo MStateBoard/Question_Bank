@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Question_Bank_2022Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Create_School_College">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Institute_Name" Type="nvarchar(max)" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
+          <Property Name="Email_ID" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Division">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="Class_ID" Type="int" />
+          <Property Name="Division" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Flag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batch" Type="nvarchar" MaxLength="50" />
+          <Property Name="Start_Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="End_Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Total_Exam_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Question_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="Class" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Topic" Type="nvarchar(max)" />
+          <Property Name="Question_Type" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Option1" Type="nvarchar(max)" />
+          <Property Name="Option2" Type="nvarchar(max)" />
+          <Property Name="Option3" Type="nvarchar(max)" />
+          <Property Name="Option4" Type="nvarchar(max)" />
+          <Property Name="Option5" Type="nvarchar(max)" />
+          <Property Name="Option6" Type="nvarchar(max)" />
+          <Property Name="Answer1" Type="varchar(max)" />
+          <Property Name="Answer2" Type="nvarchar(max)" />
+          <Property Name="Answer3" Type="nvarchar(max)" />
+          <Property Name="Marks" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question_Paper">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="Class" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Topic" Type="nvarchar(max)" />
+          <Property Name="Question_ID" Type="int" Nullable="false" />
+          <Property Name="Question_Type" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Option1" Type="nvarchar(max)" />
+          <Property Name="Option2" Type="nvarchar(max)" />
+          <Property Name="Option3" Type="nvarchar(max)" />
+          <Property Name="Option4" Type="nvarchar(max)" />
+          <Property Name="Option5" Type="nvarchar(max)" />
+          <Property Name="Option6" Type="nvarchar(max)" />
+          <Property Name="Marks" Type="nvarchar(max)" />
+          <Property Name="Paper_Name" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="varchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+          <Property Name="Index_No" Type="varchar" MaxLength="7" />
+          <Property Name="Paper_No" Type="varchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="varchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sub_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Paper_No" Type="nvarchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question3">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="varchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="varchar" MaxLength="7" />
+          <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+          <Property Name="Index_No" Type="varchar" MaxLength="7" />
+          <Property Name="Paper_No" Type="varchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="varchar(max)" />
+          <Property Name="Answer" Type="varchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question4">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Sub_Code" Type="nvarchar" MaxLength="2" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Paper_No" Type="nvarchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer1" Type="nvarchar(max)" />
+          <Property Name="Answer2" Type="nvarchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer1" Type="nvarchar(max)" />
+          <Property Name="Model_Answer2" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question5">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Sub_Code" Type="nvarchar" MaxLength="2" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Paper_No" Type="nvarchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer1" Type="nvarchar(max)" />
+          <Property Name="Answer2" Type="nvarchar(max)" />
+          <Property Name="Answer3" Type="nvarchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer1" Type="nvarchar(max)" />
+          <Property Name="Model_Answer2" Type="nvarchar(max)" />
+          <Property Name="Model_Answer3" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question6">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="varchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="varchar" MaxLength="7" />
+          <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+          <Property Name="Index_No" Type="varchar" MaxLength="7" />
+          <Property Name="Paper_No" Type="varchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Question7">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_ID" Type="varchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="varchar" MaxLength="7" />
+          <Property Name="Sub_Code" Type="varchar" MaxLength="2" />
+          <Property Name="Index_No" Type="varchar" MaxLength="7" />
+          <Property Name="Paper_No" Type="varchar(max)" />
+          <Property Name="Question_ID" Type="int" />
+          <Property Name="Question_No" Type="nvarchar(max)" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="Correct_Answer" Type="nvarchar(max)" />
+          <Property Name="Model_Answer" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Student">
+          <Key>
+            <PropertyRef Name="Seat_No" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IP_Address" Type="nvarchar(max)" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class_ID" Type="int" />
+          <Property Name="Division_ID" Type="int" />
+          <Property Name="GR_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Mobile_No" Type="float" />
+          <Property Name="Email_ID" Type="nvarchar(max)" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="IPAddress" Type="nvarchar(max)" />
+          <Property Name="Record_ID" Type="int" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class_ID" Type="int" />
+          <Property Name="Division_ID" Type="int" />
+          <Property Name="Year_ID" Type="int" />
+          <Property Name="GR_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="User_ID" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Stream" Type="nvarchar(max)" />
+          <Property Name="Paper_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sub_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Batch" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Login_Details">
+          <Key>
+            <PropertyRef Name="Seat_No" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Seat_No" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Exam_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index_No" Type="nvarchar" MaxLength="7" />
+          <Property Name="Class" Type="nvarchar" MaxLength="2" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Year">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Question_Bank_2022ModelStoreContainer">
+          <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Create_School_College" EntityType="Self.Tbl_Create_School_College" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Division" EntityType="Self.Tbl_Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Flag" EntityType="Self.Tbl_Flag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question_Data" EntityType="Self.Tbl_Question_Data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question_Paper" EntityType="Self.Tbl_Question_Paper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question1" EntityType="Self.Tbl_Question1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question2" EntityType="Self.Tbl_Question2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question3" EntityType="Self.Tbl_Question3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question4" EntityType="Self.Tbl_Question4" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question5" EntityType="Self.Tbl_Question5" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question6" EntityType="Self.Tbl_Question6" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Question7" EntityType="Self.Tbl_Question7" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student_Details" EntityType="Self.Tbl_Student_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student_Login" EntityType="Self.Tbl_Student_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student_Login_Details" EntityType="Self.Tbl_Student_Login_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Year" EntityType="Self.Tbl_Year" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Question_Bank_2022Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Division">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Class_ID" Type="Int32" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Question_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Question_Paper">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question_ID" Type="Int32" Nullable="false" />
+          <Property Name="Question_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Option6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paper_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IPAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Record_ID" Type="Int32" />
+          <Property Name="Index_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class_ID" Type="Int32" />
+          <Property Name="Division_ID" Type="Int32" />
+          <Property Name="Year_ID" Type="Int32" />
+          <Property Name="GR_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Year">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Question_Bank_2022Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Division" EntityType="Self.Tbl_Division" />
+          <EntitySet Name="Tbl_Question_Data" EntityType="Self.Tbl_Question_Data" />
+          <EntitySet Name="Tbl_Question_Paper" EntityType="Self.Tbl_Question_Paper" />
+          <EntitySet Name="Tbl_Student_Details" EntityType="Self.Tbl_Student_Details" />
+          <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" />
+          <EntitySet Name="Tbl_Year" EntityType="Self.Tbl_Year" />
+          <EntitySet Name="Tbl_Create_School_College" EntityType="Question_Bank_2022Model.Tbl_Create_School_College" />
+          <EntitySet Name="Tbl_Admin" EntityType="Question_Bank_2022Model.Tbl_Admin" />
+          <EntitySet Name="Tbl_Flag" EntityType="Question_Bank_2022Model.Tbl_Flag" />
+          <EntitySet Name="Tbl_Question1" EntityType="Question_Bank_2022Model.Tbl_Question1" />
+          <EntitySet Name="Tbl_Question2" EntityType="Question_Bank_2022Model.Tbl_Question2" />
+          <EntitySet Name="Tbl_Question3" EntityType="Question_Bank_2022Model.Tbl_Question3" />
+          <EntitySet Name="Tbl_Question6" EntityType="Question_Bank_2022Model.Tbl_Question6" />
+          <EntitySet Name="Tbl_Question7" EntityType="Question_Bank_2022Model.Tbl_Question7" />
+          <EntitySet Name="Tbl_Question4" EntityType="Question_Bank_2022Model.Tbl_Question4" />
+          <EntitySet Name="Tbl_Question5" EntityType="Question_Bank_2022Model.Tbl_Question5" />
+          <EntitySet Name="Tbl_Student_Login" EntityType="Question_Bank_2022Model.Tbl_Student_Login" />
+          <EntitySet Name="Tbl_Student" EntityType="Question_Bank_2022Model.Tbl_Student" />
+          <EntitySet Name="Tbl_Student_Login_Details" EntityType="Question_Bank_2022Model.Tbl_Student_Login_Details" />
+        </EntityContainer>
+        <EntityType Name="Tbl_Create_School_College">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Institute_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_No" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Flag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Start_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="End_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Total_Exam_Time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tbl_Question1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Question2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sub_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Index_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Question3">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Question6">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Question7">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Question4">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Question5">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question_ID" Type="Int32" />
+          <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Stream" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paper_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sub_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Student">
+          <Key>
+            <PropertyRef Name="Seat_No" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Index_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class_ID" Type="Int32" />
+          <Property Name="Division_ID" Type="Int32" />
+          <Property Name="GR_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_No" Type="Double" />
+          <Property Name="Email_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Login_Details">
+          <Key>
+            <PropertyRef Name="Seat_No" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Exam_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Time" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Question_Bank_2022ModelStoreContainer" CdmEntityContainer="Question_Bank_2022Entities">
+          <EntitySetMapping Name="Tbl_Division">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Division">
+              <MappingFragment StoreEntitySet="Tbl_Division">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question_Data">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question_Data">
+              <MappingFragment StoreEntitySet="Tbl_Question_Data">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Question_Type" ColumnName="Question_Type" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option5" ColumnName="Option5" />
+                <ScalarProperty Name="Option6" ColumnName="Option6" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="Answer3" ColumnName="Answer3" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question_Paper">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question_Paper">
+              <MappingFragment StoreEntitySet="Tbl_Question_Paper">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Question_Type" ColumnName="Question_Type" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option5" ColumnName="Option5" />
+                <ScalarProperty Name="Option6" ColumnName="Option6" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Paper_Name" ColumnName="Paper_Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student_Details">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student_Details">
+              <MappingFragment StoreEntitySet="Tbl_Student_Details">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+                <ScalarProperty Name="Division_ID" ColumnName="Division_ID" />
+                <ScalarProperty Name="Year_ID" ColumnName="Year_ID" />
+                <ScalarProperty Name="GR_No" ColumnName="GR_No" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Subject">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Subject">
+              <MappingFragment StoreEntitySet="Tbl_Subject">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Year">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Year">
+              <MappingFragment StoreEntitySet="Tbl_Year">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Create_School_College">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Create_School_College">
+              <MappingFragment StoreEntitySet="Tbl_Create_School_College">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+                <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Institute_Name" ColumnName="Institute_Name" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Admin">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Admin">
+              <MappingFragment StoreEntitySet="Tbl_Admin">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Flag">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Flag">
+              <MappingFragment StoreEntitySet="Tbl_Flag">
+                <ScalarProperty Name="Total_Exam_Time" ColumnName="Total_Exam_Time" />
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question1">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question1">
+              <MappingFragment StoreEntitySet="Tbl_Question1">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question2">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question2">
+              <MappingFragment StoreEntitySet="Tbl_Question2">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question3">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question3">
+              <MappingFragment StoreEntitySet="Tbl_Question3">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question6">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question6">
+              <MappingFragment StoreEntitySet="Tbl_Question6">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question7">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question7">
+              <MappingFragment StoreEntitySet="Tbl_Question7">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question4">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question4">
+              <MappingFragment StoreEntitySet="Tbl_Question4">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer2" ColumnName="Model_Answer2" />
+                <ScalarProperty Name="Model_Answer1" ColumnName="Model_Answer1" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Question5">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question5">
+              <MappingFragment StoreEntitySet="Tbl_Question5">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Model_Answer3" ColumnName="Model_Answer3" />
+                <ScalarProperty Name="Model_Answer2" ColumnName="Model_Answer2" />
+                <ScalarProperty Name="Model_Answer1" ColumnName="Model_Answer1" />
+                <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+                <ScalarProperty Name="Answer3" ColumnName="Answer3" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+                <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+                <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student_Login">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student_Login">
+              <MappingFragment StoreEntitySet="Tbl_Student_Login">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+                <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+                <ScalarProperty Name="Stream" ColumnName="Stream" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student">
+              <MappingFragment StoreEntitySet="Tbl_Student">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+                <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GR_No" ColumnName="GR_No" />
+                <ScalarProperty Name="Division_ID" ColumnName="Division_ID" />
+                <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student_Login_Details">
+            <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student_Login_Details">
+              <MappingFragment StoreEntitySet="Tbl_Student_Login_Details">
+                <ScalarProperty Name="Login_Time" ColumnName="Login_Time" />
+                <ScalarProperty Name="Exam_ID" ColumnName="Exam_ID" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,123 @@
+﻿@model Question_Bank.Models.Exam_Login
+
+@{
+    ViewBag.Title = "MCQ_Question";
+}
+
+<!-- Custom fonts for this template-->
+<link href="~/Design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="~/Design/CSS/sb-admin-2.css" rel="stylesheet">
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="~/Design/vendor/jquery/jquery.min.js"></script>
+<script src="~/Design/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="~/Design/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="~/Design/JS/sb-admin-2.min.js"></script>
+<script src="~/Design/project.js"></script>
+<link href="~/Design/Sweetalert/sweetalert2.css" rel="stylesheet" />
+<script src="~/Design/Sweetalert/sweetalert2.js"></script>
+<script src="~/Design/JS/Project_JS/Question_Submit.js"></script>
+
+<style>
+    body {
+        height: 100vh;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+
+    input[type=checkbox] {
+        accent-color: green;
+    }
+</style>
+
+
+<body id="page-top">
+    <form id="student">
+        <div id="wrapper">
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+                    <div class="row justify-content-center navbar p-0 text-center" style="background-color:var(--brand);">
+                        <!-- Content Column -->
+                        <div class="col-lg-1 ">
+                            <img src="~/Design/Images/MSBSHSE-LOGO.png" class="" style="width:68px;" />
+                        </div>
+
+                        <!-- Content Column -->
+                        <div class="col-lg-9 pl-0">
+                            <h3 class="" style="color:#fff;margin-left:20px; font-family:'Times New Roman', Times, serif">
+                                Maharashtra State Board of Secondary and Higher Secondary Education
+                            </h3>
+                        </div>
+
+                        <div class="col-lg-2 text-white">
+                            <p class="m-0">Current Time : <b id="time" class="text-warning"></b></p>
+                            <p class="m-0">Time Remaining : <b id="demo" class="countdown text-warning"></b></p>
+
+                        </div>
+                    </div>
+
+                    <div class="intro mt-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4"><p>Seat No. : <b id="Seat_No" name="Seat_No">@Model.Seat_No</b></p></div>
+                            <div class="col-lg-4 col-sm-4"><p>Index No. :<b id="Index_No" name="Index_No">@Model.Index_No</b></p></div>
+                            <div class="col-lg-3 col-sm-3"><p>Paper No. :<b id="Paper_No" name="Paper_No">@Model.Paper_ID</b></p></div>
+                            <div class="col-lg-1 col-sm-1 btn btn-danger btn-block" style="width:50px" id="lgout" href="#" data-toggle="modal" data-target="#logoutModal">
+                                End Exam
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4"><p>Subject Code :<b id="Sub_Code" name="Sub_Code">@Model.Sub_Code</b></p></div>
+                            <div class="col-lg-4 col-sm-4"><p>Batch :<b> @Model.Batch</b></p></div>
+                            <div class="col-lg-4 col-sm-4"><p>IC Status :<b id="ics" style="color:green;"></b></p></div>
+                        </div>
+                    </div>
+
+                    <h3 align="center">MCQ Questions</h3><br>
+
+                    <div class="row">
+                        <div class="form-group" style="padding:20px">
+                            <label>Q1) :</label><br>
+                            @Html.TextBox("Question", "kekw", new { @class = "form-control", @placeholder = "Question" })
+                        </div>
+                        <div class="form-group" style="padding:20px">
+                            <label>Option1) :</label><br>
+                            @Html.TextBox("Option1", "kekw", new { @class = "form-control", @placeholder = "Option1" })
+                        </div>
+                        <div class="form-group" style="padding:20px">
+                            <label>Option2) :</label><br>
+                            @Html.TextBox("Option2", "kekw", new { @class = "form-control", @placeholder = "Option2" })
+                        </div>
+                        <div class="form-group" style="padding:20px">
+                            <label>Option3) :</label><br>
+                            @Html.TextBox("Option3", "kekw", new { @class = "form-control", @placeholder = "Option3" })
+                        </div>
+                        <div class="form-group" style="padding:20px">
+                            <label>Option4) :</label><br>
+                            @Html.TextBox("Option4", "kekw", new { @class = "form-control", @placeholder = "Option4" })
+                        </div>
+                    </div>
+                </div>
+                <center>
+                    <input type="button" class="btn btn-primary" value="Previous" id="prev" />
+                    <input type="button" class="btn btn-success" value="Submit" />
+                </center>
+            </div>
+        </div>
+    </form>
+    </body>

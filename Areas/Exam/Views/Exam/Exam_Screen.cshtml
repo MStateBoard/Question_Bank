@@ -1,0 +1,1598 @@
+﻿@model Question_Bank.Models.Question_Paper_Model
+@{
+    ViewBag.Title = "Exam";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>MSB | Exam</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Design/CSS/sb-admin-2.css" rel="stylesheet">
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Design/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Design/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Design/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Design/JS/sb-admin-2.min.js"></script>
+    <script src="~/Design/project.js"></script>
+    <link href="~/Design/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script src="~/Design/Sweetalert/sweetalert2.js"></script>
+    <script src="~/Design/JS/Project_JS/Question_Submit.js"></script>
+    @*<script src="https://code.jquery.com/jquery-migrate-3.4.0.js"></script>*@
+
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        input[type=checkbox] {
+            accent-color: green;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+    <form id="student">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    @*<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
+                            <img src="~/Design/Images/MSBSHSE-LOGO.png" class="img-fluid" style="width: 60px;" />
+                          <h2 class="" style="color:#fff;margin-left:20px;">Maharashtra state board of secondary and higher secondary education</h2>
+
+                        </nav>*@
+                    <!-- End of Topbar -->
+                    <!-- Content Row -->
+                    <div class="row justify-content-center navbar p-0 text-center" style="background-color:var(--brand);">
+                        <!-- Content Column -->
+                        <div class="col-lg-1 ">
+                            <img src="~/Design/Images/MSBSHSE-LOGO.png" class="" style="width:68px;" />
+                        </div>
+
+                        <!-- Content Column -->
+                        <div class="col-lg-9 pl-0">
+                            <h3 class="" style="color:#fff;margin-left:20px; font-family:'Times New Roman', Times, serif">
+                                Maharashtra State Board of Secondary and Higher Secondary Education
+                            </h3>
+                        </div>
+
+                        <div class="col-lg-2 text-white">
+                            <p class="m-0">Current Time : <b id="time" class="text-warning"></b></p>
+                            <p class="m-0">Time Remaining : <b id="demo" class="countdown text-warning"></b></p>
+
+                        </div>
+                    </div>
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid" style="height: calc(100vh - 86px);">
+                        <!-- Page Heading -->
+                        <div class="intro mt-2">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4"><p>Seat No. : <b id="Seat_No" name="Seat_No">@Model.login.Seat_No</b></p></div>
+                                <div class="col-lg-4 col-sm-4"><p>Index No. :<b id="Index_No" name="Index_No">@Model.login.Index_No</b></p></div>
+                                <div class="col-lg-3 col-sm-3"><p>Paper No. :<b id="Paper_No" name="Paper_No">@Model.login.Paper_ID</b></p></div>
+                                <div class="col-lg-1 col-sm-1 btn btn-danger btn-block" style="width:50px" id="lgout" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    End Exam
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4"><p>Subject Code :<b id="Sub_Code" name="Sub_Code">@Model.login.Sub_Code</b></p></div>
+                                <div class="col-lg-4 col-sm-4"><p>Batch :<b> @Model.login.Batch</b></p></div>
+                                <div class="col-lg-4 col-sm-4"><p>IC Status :<b id="ics" style="color:green;"></b></p></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3" id="togg_sts" data-toggle="collapse" data-target="#exam_status" aria-expanded="false" aria-controls="exam_status">
+                                            <h6 class="m-0 font-weight-bold text-primary">Status</h6>
+                                        </div>
+                                        <div class="card-body" style="padding:10px;height:calc(100vh - 290px);overflow-y:auto;" id="exam_status">
+                                            <table class="table table-bordered status-table">
+                                                <tbody>
+
+                                                    <tr>
+
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q1</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int j = 1, cnt1 = 1; }
+                                                            <br>
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q1.Count != 0)
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Q1)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt1
+                                                                                </label>
+                                                                            </div>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt1
+                                                                                </label>
+                                                                            </div>
+
+
+                                                                        }
+                                                                        j++;
+                                                                        cnt1++;
+                                                                        if (j % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            j = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+                                                                        if (chk.Question_Type == "Fill in the Blanks")
+                                                                        {
+                                                                            <br>
+                                                                            <div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt1
+                                                                                </label>
+                                                                            </div>
+
+                                                                            j++;
+                                                                            cnt1++;
+                                                                        }
+
+                                                                        if (j % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            j = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q1_submit" class="btn btn-success btn-sm btn-block">Submit Question1</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q2</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int a = 1, cnt2 = 1; }
+                                                            <br>
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q2.Count != 0)
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Q2)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt2
+                                                                                </label>
+                                                                            </div>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt2
+                                                                                </label>
+                                                                            </div>
+
+
+                                                                        }
+                                                                        a++;
+                                                                        cnt2++;
+                                                                        if (a % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            a = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+                                                                        if (chk.Question_Type == "True/False")
+                                                                        {
+                                                                            <div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt2
+                                                                                </label>
+                                                                            </div>
+
+                                                                            a++;
+                                                                            cnt2++;
+                                                                        }
+
+                                                                        if (a % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            a = 1;
+                                                                        }
+
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q2_submit" class="btn btn-success btn-sm btn-block">Submit Question2</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q3</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int b = 1, cnt3 = 1; }
+                                                            <br>
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q3.Count != 0)
+                                                                {
+
+                                                                    foreach (var chk in Model.tbl_Q3)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt3
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt3
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        b++;
+                                                                        cnt3++;
+                                                                        if (b % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            b = 1;
+                                                                        }
+
+                                                                    }
+
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+                                                                        if (chk.Question_Type == "Single Correct")
+                                                                        {
+                                                                            <br><div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt3
+                                                                                </label>
+                                                                            </div>
+
+                                                                            b++;
+                                                                            cnt3++;
+                                                                        }
+
+                                                                        if (b % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            b = 1;
+                                                                        }
+
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q3_submit" class="btn btn-success btn-sm btn-block">Submit Question3</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q4</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int c = 1, cnt4 = 1; }
+                                                            <br>
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q4.Count != 0)
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Q4)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt4
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt4
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        c++;
+                                                                        cnt4++;
+                                                                        if (c % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            c = 1;
+                                                                        }
+                                                                    }
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+                                                                        if (chk.Question_Type == "Double Correct")
+                                                                        {
+                                                                            <br>
+                                                                            <div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt4
+                                                                                </label>
+                                                                            </div>
+
+                                                                            c++;
+                                                                            cnt4++;
+                                                                        }
+
+                                                                        if (c % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            c = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q4_submit" class="btn btn-success btn-sm btn-block">Submit Question4</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q5</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int f = 1, cnt5 = 1; }
+                                                            <br>
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q5.Count != 0)
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Q5)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt5
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt5
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        f++;
+                                                                        cnt5++;
+                                                                        if (f % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            f = 1;
+                                                                        }
+                                                                    }
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+                                                                        if (chk.Question_Type == "Triple Correct")
+                                                                        {
+                                                                            <br>
+                                                                            <div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt5
+                                                                                </label>
+                                                                            </div>
+                                                                            f++;
+                                                                            cnt5++;
+                                                                        }
+
+                                                                        if (f % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            f = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q5_submit" class="btn btn-success btn-sm btn-block">Submit Question5</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q6</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int e = 1, cnt6 = 1; }
+                                                            <br>
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q6.Count != 0)
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Q6)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt6
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt6
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        e++;
+                                                                        cnt6++;
+                                                                        if (e % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            e = 1;
+                                                                        }
+                                                                    }
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+
+                                                                        if (chk.Question_Type == "Theory Question" && chk.Marks == "6")
+                                                                        {
+                                                                            <br>
+                                                                            <div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt6
+                                                                                </label>
+                                                                            </div>
+                                                                            e++;
+                                                                            cnt6++;
+                                                                        }
+
+                                                                        if (e % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            e = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q6_submit" class="btn btn-success btn-sm btn-block">Submit Question6</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="70px">
+                                                            <br>
+                                                            <a href="#" class="btn btn-primary">Q7</a>
+                                                        </td>
+                                                        <td>
+                                                            @{int d = 1, cnt7 = 1; }
+                                                            <br />
+                                                            <div class="row">
+                                                                @if (Model.tbl_Q7.Count != 0)
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Q7)
+                                                                    {
+                                                                        if (chk.Active == 1)
+                                                                        {
+                                                                            <div class="checkbox  checkbox-success">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt7
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div class="checkbox  checkbox-danger">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt7
+                                                                                </label>
+                                                                            </div>
+                                                                        }
+                                                                        d++;
+                                                                        cnt7++;
+                                                                        if (d % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            d = 1;
+                                                                        }
+                                                                    }
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    foreach (var chk in Model.tbl_Question_Papers)
+                                                                    {
+
+                                                                        if (chk.Question_Type == "Theory Question" && chk.Marks == "8")
+                                                                        {
+                                                                            <br />
+                                                                            <div class="checkbox  checkbox-info">
+
+                                                                                <input id="check_@chk.ID" type="checkbox" class="styled" checked>
+                                                                                <label for="chk_@chk.ID">
+                                                                                    @cnt7
+                                                                                </label>
+                                                                            </div>
+                                                                            d++;
+                                                                            cnt7++;
+                                                                        }
+
+                                                                        if (d % 6 == 0)
+                                                                        {
+                                                                        @:</div><br><div class="row">
+                                                                            d = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </div><br>
+                                                            <div class="row">
+                                                                <button type="button" id="btn_q7_submit" class="btn btn-success btn-sm btn-block">Submit Question7</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-footer">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-9">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#home"><b>Q1</b></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#menu1"><b>Q2</b></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#menu2"><b>Q3</b></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#menu3"><b>Q4</b></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#menu4"><b>Q5</b></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#menu5"><b>Q6</b></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#menu6"><b>Q7</b></a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        @{ int i = 1; }
+                                        @if (Model != null)
+                                        {
+
+                                            <div id="home" class="container tab-pane active">
+
+                                                <br>
+                                                <table id="q1" class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th><b>Q.No.</b></th>
+                                                            <th><b>Questions</b></th>
+                                                            <th><b>Answer</b></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model.tbl_Q1.Count == 0)
+                                                        {
+                                                            foreach (var item in Model.tbl_Question_Papers)
+                                                            {
+
+                                                                if (item.Question_Type == "Fill in the Blanks")
+                                                                {
+
+                                                                    <tr>
+                                                                        <td style="width:100px;">@Html.Hidden("hd_id", item.ID) <b id="fillqno">@i)</b></td>
+                                                                        <td style="width:50%">@item.Question</td>
+                                                                        <td style="width:100%">
+                                                                            <div class="form-group">
+                                                                                <input type="text" id="q1_ans_@i" class="form-control form-control-user" placeholder="Enter Answer">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    i++;
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            foreach (var item in Model.tbl_Question_Papers)
+                                                            {
+                                                                if (item.Question_Type == "Fill in the Blanks")
+                                                                {
+                                                                    <tr>
+                                                                        <td style="width:100px;">@Html.Hidden("hd_id", item.ID) <b id="fillqno">@i)</b></td>
+                                                                        <td style="width:50%">@item.Question</td>
+                                                                        <td style="width:100%">
+                                                                            <div class="form-group">
+                                                                                @foreach (var ans in Model.tbl_Q1)
+                                                                                {
+                                                                                    if (item.Question_ID == ans.Question_ID)
+                                                                                    {
+                                                                                        <input type="text" id="q1_ans_@i" value="@ans.Answer" class="form-control form-control-user" placeholder="Enter Answer">
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    i++;
+                                                                }
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
+
+
+                                        <div id="menu1" class="container tab-pane fade">
+                                            <br>
+                                            <table id="q2" class="table table-bordered">
+                                                <tbody>
+                                                    @{ int k = 1; }
+                                                    @if (Model.tbl_Q2.Count == 0)
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "True/False")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="tfqno">Q.@k)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                        <label><b>Options :</b></label>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option1">
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option2">
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                k++;
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "True/False")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="tfqno">Q.@k)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                        <label><b>Options :</b></label>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q2)
+                                                                                {
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer == item.Option1)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option1" checked>
+                                                                                    }
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer != item.Option1)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option1">
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q2)
+                                                                                {
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer == item.Option2)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option2" checked>
+                                                                                    }
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer != item.Option2)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option2">
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                k++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                        <div id="menu2" class="container tab-pane fade">
+                                            <br>
+                                            <table id="q3" class="table table-bordered">
+                                                @{ int l = 1; }
+                                                <tbody>
+                                                    @if (Model.tbl_Q3.Count == 0)
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Single Correct")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="sqno">Q.@l)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                        <label><b>Options :</b></label>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option1">
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option2">
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                l++;
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Single Correct")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="sqno">Q.@l)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                        <label><b>Options :</b></label>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q3)
+                                                                                {
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer == item.Option1)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option1" checked>
+                                                                                    }
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer != item.Option1)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option1">
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q3)
+                                                                                {
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer == item.Option2)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option2" checked>
+                                                                                    }
+                                                                                    if (item.Question_ID == ans.Question_ID && ans.Answer != item.Option2)
+                                                                                    {
+                                                                                        <input type="radio" class="radio_chk" id=@item.ID name=@item.ID value="@item.Option2">
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                l++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div id="menu3" class="container tab-pane fade">
+                                            <br>
+                                            <table id="q4" class="table table-bordered">
+                                                <tbody>
+                                                    @{ int q = 1; }
+                                                    @if (Model.tbl_Q4.Count == 0)
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Double Correct")
+                                                            {
+
+                                                                <tr>
+                                                                    <td style="width:100px;"><b id="dqno">Q @q)</b>@Html.Hidden("hd_id", item.ID) @Html.Hidden("chk_name1", item.Option1) @Html.Hidden("chk_name2", item.Option2) @Html.Hidden("chk_name3", item.Option3) @Html.Hidden("chk_name4", item.Option4)</td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                        <label><b>Options :</b></label>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option1 value=@item.Option1>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option2 value=@item.Option2>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option3 value=@item.Option3>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option3 != null)
+                                                                                {
+                                                                                    <p>3) @Html.DisplayFor(m => item.Option3) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option4 value=@item.Option4>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option4 != null)
+                                                                                {
+                                                                                    <p>4) @Html.DisplayFor(m => item.Option4) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                q++;
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Double Correct")
+                                                            {
+
+                                                                <tr>
+                                                                    <td style="width:100px;"><b id="dqno">Q @q)</b>@Html.Hidden("hd_id", item.ID) @Html.Hidden("chk_name1", item.Option1) @Html.Hidden("chk_name2", item.Option2) @Html.Hidden("chk_name3", item.Option3) @Html.Hidden("chk_name4", item.Option4)</td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                        <label><b>Options :</b></label>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q4)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option1 || ans.Answer2 == item.Option1))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option1 value=@item.Option1 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option1 && ans.Answer2 != item.Option1))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option1 value=@item.Option1>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q4)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option2 || ans.Answer2 == item.Option2))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option2 value=@item.Option2 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option2 && ans.Answer2 != item.Option2))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option2 value=@item.Option2>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q4)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option3 || ans.Answer2 == item.Option3))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option3 value=@item.Option3 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option3 && ans.Answer2 != item.Option3))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option3 value=@item.Option3>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option3 != null)
+                                                                                {
+                                                                                    <p>3) @Html.DisplayFor(m => item.Option3) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q4)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option4 || ans.Answer2 == item.Option4))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option4 value=@item.Option4 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option4 && ans.Answer2 != item.Option4))
+                                                                                    {
+                                                                                        <input type="checkbox" class="double_chk" id=@item.ID name=@item.Option4 value=@item.Option4>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option4 != null)
+                                                                                {
+                                                                                    <p>4) @Html.DisplayFor(m => item.Option4) </p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                q++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div id="menu4" class="container tab-pane fade">
+                                            <br>
+                                            <table id="q5" class="table table-bordered">
+                                                <tbody>
+                                                    @{ int n = 1; }
+                                                    @if (Model.tbl_Q5.Count == 0)
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Triple Correct")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;"><b id="tqno">Q @n)</b>@Html.Hidden("hd_id", item.ID) @Html.Hidden("chk_name1", item.Option1) @Html.Hidden("chk_name2", item.Option2) @Html.Hidden("chk_name3", item.Option3) @Html.Hidden("chk_name4", item.Option4) @Html.Hidden("chk_name5", item.Option5) @Html.Hidden("chk_name6", item.Option6)</td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+
+                                                                        <label><b>Options :</b></label>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="chk" id=@item.ID name=@item.Option1 value=@item.Option1>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="chk" id=@item.ID name=@item.Option2 value=@item.Option2>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="chk" id=@item.ID name=@item.Option3 value=@item.Option3>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option3 != null)
+                                                                                {
+                                                                                    <p>3) @Html.DisplayFor(m => item.Option3)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="chk" id=@item.ID name=@item.Option4 value=@item.Option4>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option4 != null)
+                                                                                {
+                                                                                    <p>4) @Html.DisplayFor(m => item.Option4)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="chk" id=@item.ID name=@item.Option5 value=@item.Option5>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option5 != null)
+                                                                                {
+                                                                                    <p>5) @Html.DisplayFor(m => item.Option5)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                <input type="checkbox" class="chk" id=@item.ID name=@item.Option6 value=@item.Option6>
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option6 != null)
+                                                                                {
+                                                                                    <p>6) @Html.DisplayFor(m => item.Option6)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                n++;
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Triple Correct")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;"><b id="tqno">Q @n)</b>@Html.Hidden("hd_id", item.ID) @Html.Hidden("chk_name1", item.Option1) @Html.Hidden("chk_name2", item.Option2) @Html.Hidden("chk_name3", item.Option3) @Html.Hidden("chk_name4", item.Option4) @Html.Hidden("chk_name5", item.Option5) @Html.Hidden("chk_name6", item.Option6)</td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+
+                                                                        <label><b>Options :</b></label>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q5)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option1 || ans.Answer2 == item.Option1 || ans.Answer3 == item.Option1))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option1 value=@item.Option1 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option1 && ans.Answer2 != item.Option1 && ans.Answer3 != item.Option1))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option1 value=@item.Option1>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option1 != null)
+                                                                                {
+                                                                                    <p>1) @Html.DisplayFor(m => item.Option1)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q5)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option2 || ans.Answer2 == item.Option2 || ans.Answer3 == item.Option2))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option2 value=@item.Option2 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option2 && ans.Answer2 != item.Option2 && ans.Answer3 != item.Option2))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option2 value=@item.Option2>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option2 != null)
+                                                                                {
+                                                                                    <p>2) @Html.DisplayFor(m => item.Option2)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q5)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option3 || ans.Answer2 == item.Option3 || ans.Answer3 == item.Option3))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option3 value=@item.Option3 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option3 && ans.Answer2 != item.Option3 && ans.Answer3 != item.Option3))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option3 value=@item.Option3>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option3 != null)
+                                                                                {
+                                                                                    <p>3) @Html.DisplayFor(m => item.Option3)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q5)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option4 || ans.Answer2 == item.Option4 || ans.Answer3 == item.Option4))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option4 value=@item.Option4 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option4 && ans.Answer2 != item.Option4 && ans.Answer3 != item.Option4))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option4 value=@item.Option4>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option4 != null)
+                                                                                {
+                                                                                    <p>4) @Html.DisplayFor(m => item.Option4)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q5)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option5 || ans.Answer2 == item.Option5 || ans.Answer3 == item.Option5))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option5 value=@item.Option5 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option5 && ans.Answer2 != item.Option5 && ans.Answer3 != item.Option5))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option5 value=@item.Option5>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option5 != null)
+                                                                                {
+                                                                                    <p>5) @Html.DisplayFor(m => item.Option5)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-3" style="padding-left:1em">
+                                                                                @foreach (var ans in Model.tbl_Q5)
+                                                                                {
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 == item.Option6 || ans.Answer2 == item.Option6 || ans.Answer3 == item.Option6))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option6 value=@item.Option6 checked>
+                                                                                    }
+                                                                                    if ((item.Question_ID == ans.Question_ID) && (ans.Answer1 != item.Option6 && ans.Answer2 != item.Option6 && ans.Answer3 != item.Option6))
+                                                                                    {
+                                                                                        <input type="checkbox" class="chk" id=@item.ID name=@item.Option6 value=@item.Option6>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                            <div class="col-xs-3" style="padding-left:2em">
+                                                                                @if (item.Option6 != null)
+                                                                                {
+                                                                                    <p>6) @Html.DisplayFor(m => item.Option6)</p>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                n++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div id="menu5" class="container tab-pane fade">
+                                            <br>
+                                            <table id="q6" class="table table-bordered">
+                                                <tbody>
+                                                    @{ int o = 1; }
+                                                    @if (Model.tbl_Q6.Count == 0)
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Theory Question" && item.Marks == "6")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="th6qno">Q @o)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Enter Answer :</label><br />
+                                                                        <div class="form-group">
+                                                                            <textarea id="th6_@item.ID" class="form-control form-control-user" name="th6" rows="8" cols="50"></textarea>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Marks :</label><br>
+                                                                        <div class="col-lg-4">
+                                                                            <input type="text" class="form-control form-control-user" value="@item.Marks" readonly>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                o++;
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Theory Question" && item.Marks == "6")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="th6qno">Q @o)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Enter Answer :</label><br />
+                                                                        <div class="form-group">
+                                                                            @foreach (var ans in Model.tbl_Q6)
+                                                                            {
+                                                                                if (item.Question_ID == ans.Question_ID)
+                                                                                {
+                                                                                    <textarea id="th6_@item.ID" class="form-control form-control-user" name="th6" rows="8" cols="50">@ans.Answer</textarea>
+                                                                                }
+                                                                            }
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Marks :</label><br>
+                                                                        <div class="col-lg-4">
+                                                                            <input type="text" class="form-control form-control-user" value="@item.Marks" readonly>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                o++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div id="menu6" class="container tab-pane fade">
+                                            <br>
+                                            <table id="q7" class="table table-bordered">
+                                                <tbody>
+                                                    @{ int p = 1; }
+                                                    @if (Model.tbl_Q7.Count == 0)
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Theory Question" && item.Marks == "8")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="th8qno">Q @p)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Enter Ans... :</label><br />
+                                                                        <div class="form-group">
+                                                                            <textarea id="th8_@item.ID" class="form-control form-control-user" name="th8" rows="8" cols="50"></textarea>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Marks :</label><br>
+                                                                        <div class="col-lg-4">
+                                                                            <input type="text" class="form-control form-control-user" value="@item.Marks" readonly>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                p++;
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var item in Model.tbl_Question_Papers)
+                                                        {
+                                                            if (item.Question_Type == "Theory Question" && item.Marks == "8")
+                                                            {
+                                                                <tr>
+                                                                    <td style="width:100px;">@Html.Hidden("hd_id", item.ID)<b id="th8qno">Q @p)</b></td>
+                                                                    <td>
+                                                                        <label><b>Question :</b></label>
+                                                                        <p>@Html.DisplayFor(m => item.Question)</p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Enter Ans... :</label><br />
+                                                                        <div class="form-group">
+                                                                            @foreach (var ans in Model.tbl_Q7)
+                                                                            {
+                                                                                if (item.Question_ID == ans.Question_ID)
+                                                                                {
+                                                                                    <textarea id="th8_@item.ID" class="form-control form-control-user" name="th8" rows="8" cols="50">@ans.Answer</textarea>
+                                                                                }
+                                                                            }
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <label>Marks :</label><br>
+                                                                        <div class="col-lg-4">
+                                                                            <input type="text" class="form-control form-control-user" value="@item.Marks" readonly>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                p++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <center>
+                                            <input type="button" class="btn btn-primary" value="Next" id="next"/>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are You Sure?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Are you sure you want to END the exam!</div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-primary" id="end_exm" value="END">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

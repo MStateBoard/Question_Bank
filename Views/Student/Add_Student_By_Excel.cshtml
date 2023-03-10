@@ -1,0 +1,130 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+
+<div class="container-sm">
+    <div Class="card">
+        <div Class="card-header">
+            Add Student
+        </div>
+    </div>
+    <div Class="AppFormTable" style="background-color: #e7fafe;">
+        <br />
+        <form id="app_form">
+            <div Class="container">
+                <div Class="row ">
+                    <div Class="form-group col-md-3">
+                        <label for="exampleInputEmail1" style="color:black">Select Class :</label>
+               
+                        @Html.DropDownList("Class_ID", (IEnumerable<SelectListItem>)ViewBag.Class, new { @Class = "form-control" })
+
+                    </div>
+                    <div Class=" col-md-3">
+                        <label for="exampleInputEmail1" style="color:black">Select Division :</label>
+                        <select name="Division_ID" id="Division_ID" Class="form-control"></select>
+                    </div>
+                    <div Class=" col-md-3">
+                        <label for="exampleInputEmail1" style="color:black">Select Year :</label>
+                        @Html.DropDownList("Year_ID", (IEnumerable<SelectListItem>)ViewBag.Year, "--Select Year--", new { @Class = "form-control" })
+                    </div>
+
+
+                </div>
+                <div class="row">
+
+                    <div Class="form-group col-md-3">
+                        <label for="exampleInputEmail1" style="color:black">Select File :</label>
+                        <input type="file" name="student_file" id="student_file" class="form-control" />
+                    </div>
+                    <div Class="form-group col-md-3">
+                        <label for="exampleInputEmail1" style="color:black">Sample excel :</label><br />
+                        <a href="~/Design/Student_Excel.xls" style="color:green">Click Here to Download Sample Excel</a>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div Class=" col-md-12 text-center">
+                        <input type="button" value="Submit" Class="btn_submit" id="btn_submit" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div Class=" col-md-12 text-center">
+                        <table id="failure_div" style="width: 100%; padding: 0 3px; font-size: 13px; font-family: Verdana; border-collapse: collapse; border-width: 0 0 1px 0;display:none">
+                            <tbody>
+                                <tr>
+                                    <td style="background-color: rgba(246, 34, 63, 0.05); border: 1px solid #f3a8b3; padding: 5px 0 5px 10px; color: Black;">
+                                        <div class="important-text" id="failure_txt">
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="success_div" style="width: 100%; padding: 0 3px; font-size: 13px; font-family: Verdana; border-collapse: collapse; border-width: 0 0 1px 0;display:none">
+                            <tbody>
+                                <tr>
+                                    <td style="background-color: rgba(246, 34, 63, 0.05); border: 1px solid #14de4a; padding: 5px 0 5px 10px; color: Black;">
+                                        <div class="important-text" id="success_txt">
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+    <br />
+
+</div>
+<script>
+    $(document).ready(function () {
+        $("#btn_submit").click(function () {
+            var formData = new FormData($(app_form)[0]);
+            $.ajax({
+                url: "Add_Student_By_Excel",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    if (Data.Result) {
+                        Success_Alert(Data.Message);
+                        $("#failure_div").show();
+                        $("#success_div").show();
+                        $("#failure_txt").text(Data.Failure);
+                        $("#success_txt").text(Data.Success);
+                    }
+                    else {
+                        Error_Alert(Data.Message);
+                        $("#failure_div").show();
+                        $("#success_div").show();
+                        $("#failure_txt").text(Data.Failure);
+                        $("#success_txt").text(Data.Success);
+                    }
+                },
+                error: function (e1, e2, e3) {
+
+                }
+            });
+        })
+       
+        $("#Class_ID").change(function () {
+
+            $("#Division_ID").empty();
+            Get_Division( $("#Class_ID").val(), $("#Division_ID").attr("id"))
+        });
+    })</script>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Create_Class";
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+
+<style>
+    .AppFormTable th {
+        background-color: steelblue;
+        text-align: center;
+        color: white;
+    }
+
+    #tbl_user td {
+        text-align: center;
+    }
+</style>
+
+<script src="~/Design/JS/Project_JS/Create_Class.js"></script>
+<h2 align="center">Create Class</h2>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="user">
+    <div class="container">
+        <div class="row">
+            @Html.Hidden("UserID", TempData["User_ID"])
+            @Html.Hidden("ID")
+            <center>
+                <div class="col-sm-2">
+                    <label>Select Class :</label><span style="color:Red">*</span><br>
+                    @Html.DropDownList("Class", ViewBag.ClassList as SelectList, new { @class = "form-control form-select" })
+                </div>
+            </center>
+        </div>
+    </div> <br>
+    <center>
+        <button type="button" class="btn btn-success" id="btn_submit">Submit</button>
+    </center> <br>
+    <div class="row" style="border:inset 2px  #3eadcf"></div>
+    <br />
+
+    <table id="Tbl2" class="AppFormTable">
+
+        <tr>
+            <th align="left"><font size="2">Question Bank Information </font></th>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sr.No.</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">User ID</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Class</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Subject</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Question Type</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:200%;">Question</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option1</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option2</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option3</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option4</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option5</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option6</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer1</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer2</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer3</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Edit</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_user"></tbody>
+                </table>
+                <br>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Question_Bank_2022ModelStoreContainer" CdmEntityContainer="Question_Bank_2022Entities">
+    <EntitySetMapping Name="Tbl_Division">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Division">
+        <MappingFragment StoreEntitySet="Tbl_Division">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question_Data">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question_Data">
+        <MappingFragment StoreEntitySet="Tbl_Question_Data">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="Question_Type" ColumnName="Question_Type" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Option1" ColumnName="Option1" />
+          <ScalarProperty Name="Option2" ColumnName="Option2" />
+          <ScalarProperty Name="Option3" ColumnName="Option3" />
+          <ScalarProperty Name="Option4" ColumnName="Option4" />
+          <ScalarProperty Name="Option5" ColumnName="Option5" />
+          <ScalarProperty Name="Option6" ColumnName="Option6" />
+          <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+          <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+          <ScalarProperty Name="Answer3" ColumnName="Answer3" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question_Paper">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question_Paper">
+        <MappingFragment StoreEntitySet="Tbl_Question_Paper">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Question_Type" ColumnName="Question_Type" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Option1" ColumnName="Option1" />
+          <ScalarProperty Name="Option2" ColumnName="Option2" />
+          <ScalarProperty Name="Option3" ColumnName="Option3" />
+          <ScalarProperty Name="Option4" ColumnName="Option4" />
+          <ScalarProperty Name="Option5" ColumnName="Option5" />
+          <ScalarProperty Name="Option6" ColumnName="Option6" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Paper_Name" ColumnName="Paper_Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Student_Details">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student_Details">
+        <MappingFragment StoreEntitySet="Tbl_Student_Details">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Division_ID" ColumnName="Division_ID" />
+          <ScalarProperty Name="Year_ID" ColumnName="Year_ID" />
+          <ScalarProperty Name="GR_No" ColumnName="GR_No" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Subject">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Subject">
+        <MappingFragment StoreEntitySet="Tbl_Subject">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Year">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Year">
+        <MappingFragment StoreEntitySet="Tbl_Year">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Create_School_College">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Create_School_College">
+        <MappingFragment StoreEntitySet="Tbl_Create_School_College">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+          <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Institute_Name" ColumnName="Institute_Name" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Admin">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Admin">
+        <MappingFragment StoreEntitySet="Tbl_Admin">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Flag">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Flag">
+        <MappingFragment StoreEntitySet="Tbl_Flag">
+          <ScalarProperty Name="Total_Exam_Time" ColumnName="Total_Exam_Time" />
+          <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+          <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question1">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question1">
+        <MappingFragment StoreEntitySet="Tbl_Question1">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question2">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question2">
+        <MappingFragment StoreEntitySet="Tbl_Question2">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question3">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question3">
+        <MappingFragment StoreEntitySet="Tbl_Question3">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question6">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question6">
+        <MappingFragment StoreEntitySet="Tbl_Question6">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question7">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question7">
+        <MappingFragment StoreEntitySet="Tbl_Question7">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer" ColumnName="Model_Answer" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question4">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question4">
+        <MappingFragment StoreEntitySet="Tbl_Question4">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer2" ColumnName="Model_Answer2" />
+          <ScalarProperty Name="Model_Answer1" ColumnName="Model_Answer1" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+          <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Question5">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Question5">
+        <MappingFragment StoreEntitySet="Tbl_Question5">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Model_Answer3" ColumnName="Model_Answer3" />
+          <ScalarProperty Name="Model_Answer2" ColumnName="Model_Answer2" />
+          <ScalarProperty Name="Model_Answer1" ColumnName="Model_Answer1" />
+          <ScalarProperty Name="Correct_Answer" ColumnName="Correct_Answer" />
+          <ScalarProperty Name="Answer3" ColumnName="Answer3" />
+          <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+          <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Question_No" ColumnName="Question_No" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Paper_No" ColumnName="Paper_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Student_Login">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student_Login">
+        <MappingFragment StoreEntitySet="Tbl_Student_Login">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Sub_Code" ColumnName="Sub_Code" />
+          <ScalarProperty Name="Paper_ID" ColumnName="Paper_ID" />
+          <ScalarProperty Name="Stream" ColumnName="Stream" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Student">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student">
+        <MappingFragment StoreEntitySet="Tbl_Student">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Email_ID" ColumnName="Email_ID" />
+          <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GR_No" ColumnName="GR_No" />
+          <ScalarProperty Name="Division_ID" ColumnName="Division_ID" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Student_Login_Details">
+      <EntityTypeMapping TypeName="Question_Bank_2022Model.Tbl_Student_Login_Details">
+        <MappingFragment StoreEntitySet="Tbl_Student_Login_Details">
+          <ScalarProperty Name="Login_Time" ColumnName="Login_Time" />
+          <ScalarProperty Name="Exam_ID" ColumnName="Exam_ID" />
+          <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+          <ScalarProperty Name="Index_No" ColumnName="Index_No" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

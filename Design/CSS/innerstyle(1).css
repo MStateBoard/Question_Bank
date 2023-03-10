@@ -1,0 +1,794 @@
+/***** FAQs and Feedback - 19 Jan, 2015 *****/
+
+.accordion {
+}
+
+.accordion-item {
+    margin: 3px 0;
+    border: 0px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+    .accordion-item .accordion-title {
+        position: relative;
+        
+        padding: 8px 40px 8px 10px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #fde4ca;
+        cursor: pointer;
+        border: 1px solid #e6e0da;
+    }
+
+        .accordion-item .accordion-title:after {
+            position: absolute;
+            top: 11px;
+            right: 14px;
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: url(images/sprite-arrows.png) no-repeat right 0;
+        }
+
+        .accordion-item .accordion-title .icon-print {
+            padding: 1px;
+            display: inline-block;
+            float: right;
+        }
+
+            .accordion-item .accordion-title .icon-print img {
+                display: block;
+            }
+
+    .accordion-item .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+
+    .accordion-item.onn .accordion-title:after {
+        background-position: left 0;
+    }
+
+    .accordion-item.onn .accordion-body {
+        max-height: 500px;
+        border: 1px solid #e6e0da;
+        border-top: 0;
+    }
+
+    .accordion-item .accordion-body .holder {
+        padding: 14px;
+        border-top: 1px solid #ddd;
+    }
+
+.qa-holder {
+}
+
+.qa .question {
+    padding: 5px 0;
+    font-size: 12px;
+    ;
+    color: #000000;
+    cursor: pointer;
+}
+
+.qa .answer {
+    padding-bottom: 0;
+    max-height: 0;
+    font-size: 12px;
+    ;
+    color: #000000;
+    overflow: hidden;
+    font-style: italic;
+    color: #777;
+    transition: all 0.4s ease-in-out;
+}
+
+.qa.onn .answer {
+    padding-bottom: 12px;
+    max-height: 100px;
+    font-size: 12px;
+    ;
+    color: #000000;
+}
+
+.qa .sr {
+    float: left;
+    padding-right: 10px;
+    display: inline-block;
+    width: 35px;
+    text-align: right;
+    font-size: 12px;
+    ;
+    color: #000000;
+    font-weight: bold;
+}
+
+.qa .text {
+    margin: 0;
+    margin-left: 45px;
+    padding-right: 15px;
+}
+
+.color-red {
+    background: #919191;
+}
+
+#dhtmltooltip {
+    position: absolute;
+    left: -300px;
+    text-align: left;
+    width: 250px;
+    /* border: 1px solid #e7812f ; */
+    padding: 3px 7px;
+    border-radius: 5px;
+    background-color: black;
+    visibility: hidden;
+    z-index: 100;
+    font-size: 13px;
+    color: white;
+    /*Remove below line to remove shadow. Below line should always appear last within this CSS #F1FCDE;*/
+    filter: progid: DXImageTransform.Microsoft.Shadow(color=gray, direction=135);
+}
+
+    #dhtmltooltip:before {
+        content: "";
+        position: absolute;
+        left: 5%;
+        top: -8px;
+        /* transform: translateY(-50%); */
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 10px solid black;
+    }
+
+.list-text {
+    background-color: #f8efef;
+    border: 1px solid #ed8c9a;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+#dhtmlpointer {
+    position: absolute;
+    left: -300px;
+    z-index: 101;
+    visibility: hidden;
+}
+
+
+/*new css*/
+
+.pdfobject-container {
+    height: 30rem;
+    border: 1rem solid rgba(0,0,0,.1);
+}
+
+.doc-container {
+   /* width: 63.6rem;*/
+    height: 25rem;
+    border: 1rem solid rgba(0,0,0,.1);
+}
+
+/* Content Box - Start */
+
+.ContentBox {
+    background: transparent;
+    margin: 1px 2px 2px 2px;
+    width: 99.8%;
+}
+
+.ContentBox-innergrid {
+    background: transparent;
+    margin: 0px 1px 0 5px;
+    width: 80%;
+}
+
+.ContentBox .b1,
+.ContentBox .b2,
+.ContentBox .b3,
+.ContentBox .b4,
+.ContentBox .b5,
+.ContentBox .b6,
+.ContentBox .b7,
+.ContentBox .b8 {
+    background: transparent;
+    display: block;
+    overflow: hidden;
+    height: 1px;
+    font-size: 1px;
+}
+
+.ContentBox .b2,
+.ContentBox .b3,
+.ContentBox .b4,
+.ContentBox .b5,
+.ContentBox .b6,
+.ContentBox .b7 {
+    border: 1px solid #67AAE0;
+    /* c8c8c8 Border Color*/
+    border-width: 0 1px;
+}
+
+@media screen {
+    .ContentBox .b2,
+    .ContentBox .b3,
+    .ContentBox .b4 {
+        background: #67AAE0;
+        /*Head Color*/
+        filter: progid: DXImageTransform.Microsoft.Gradient(endColorstr='#919191', startColorstr='#919191', gradientType='1');
+    }
+}
+
+.ContentBox .b5,
+.ContentBox .b6,
+.ContentBox .b7 {
+    background: #FFFFFF;
+    /*Body Color*/
+}
+
+.ContentBox .b1,
+.ContentBox .b8 {
+    margin: 0 5px;
+    background: #67AAE0;
+    /*Border Color*/
+    border: 1px solid #67AAE0;
+    /* c8c8c8 Border Color*/
+    border-width: 1px 0 0 0;
+    height: 0;
+    display: none;
+}
+
+.ContentBox .b2,
+.ContentBox .b7 {
+    margin: 0 3px;
+    height: 1px;
+    border-width: 0 2px;
+}
+
+.ContentBox .b3,
+.ContentBox .b6 {
+    margin: 0 2px;
+}
+
+.ContentBox .b4,
+.ContentBox .b5 {
+    margin: 0 1px;
+    height: 2px;
+}
+
+.ContentBox .HeadDiv {
+    background: #3070ae;
+    position: relative;
+    display: block;
+    /* margin-top: 17px; */
+    border-bottom: 0px;
+    margin: 4px 4px 0;
+    padding: 12px 5px;
+    font-weight: 550;
+    font-size: 15px;
+    color: #ffffff;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.InnerBodyDiv {
+    border-bottom: 0px solid #67AAE0;
+}
+
+.ContentBox .HeadDiv span {
+    padding: 5px 5px;
+}
+
+@media screen {
+    .ContentBox .HeadDiv {
+        /*background:#67AAE0;*/
+        /*Head Color*/
+        #filter: progid: DXImageTransform.Microsoft.Gradient(endColorstr='#919191', startColorstr='#919191', gradientType='1');
+    }
+}
+
+.HeadDiv a {
+    position: absolute;
+    right: 5px;
+    bottom: 1px;
+}
+
+.HeadDiv img {
+    border: 0;
+    height: 22px;
+    margin-top: -40px;
+}
+
+.ContentBox .BodyDiv {
+    background: transparent;
+    display: block;
+    background: #fbfbfb;
+    /*Body Color*/
+    border-width: 1px 1px;
+    padding-top: 5px;
+    color: #000000;
+    margin: 0px 4px;
+}
+
+.border-box {
+    border: 1px solid #ed8c9a;
+    padding: 1%;
+    border-radius: 7px;
+    background: #f8efef;
+}
+
+
+/* 
+.ContentBox .InnerBodyDiv {
+    padding: 5px;
+} */
+
+.SelectedRow {
+    background-color: #f7e4ce;
+    font-weight: bold;
+}
+
+.list-border {
+    background: #eeecf9;
+    padding: 1.2%;
+    border: 1px solid #7557fd;
+    border-radius: 5px;
+}
+
+
+/*Content Box -End*/
+
+.list-text li {
+    margin-left: 22px;
+    padding-left: 0;
+}
+
+.small-AppFormTable td {
+    padding: 7px !important;
+    font-size: 13px !important;
+}
+
+
+/*Table used for alignment*/
+
+.AppFormTable {
+    width: 100%;
+    padding: 0 5px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+    .AppFormTable th {
+        font-size: 14px;
+        font-weight: 500;
+        color: #3d4348;
+        padding: 10px;
+        letter-spacing: 0.04em;
+        background-color: #d0e1f1;
+        /* border-top-left-radius: 5px;
+	border-top-right-radius: 5px; */
+        border-color: #bcd5ec;
+    }
+
+    .AppFormTable .head {
+        font-size: 12px;
+        font-weight: bold;
+        color: #000000;
+        border: 0px solid #F0F0F0;
+        letter-spacing: 0.04em;
+        border-width: 1px 0 0 1px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .AppFormTable td {
+        color: #505050;
+        border: 1px solid #d0e1f1;
+        padding: 10px;
+        font-size: 14px !important;
+    }
+
+    .AppFormTable input {
+        border: 1px solid #d9d9d9;
+        font-size: 13px;
+        height: 22px;
+        padding: 12px;
+        border-radius: 4px;
+        color: #000000;
+    }
+
+        .AppFormTable input[type=checkbox] {
+            vertical-align: middle;
+        }
+
+        .AppFormTable input[type=image] {
+            vertical-align: middle;
+            padding:0px !important;
+        }
+
+    .AppFormTable select {
+        color: #000000;
+        border: 1px solid #d9d9d9;
+        font-size: 13px;
+        height: 31px;
+        padding: 3px;
+        border-radius: 4px;
+    }
+
+.TextInput {
+    border: 1px solid #CCCCCC;
+    font-size: 13px;
+    color: #000000;
+}
+
+select {
+    font-size: 13px;
+    font-family: 'poppins';
+    text-decoration: none;
+    color: #000000;
+}
+
+.ddList {
+    font-size: 10px;
+}
+
+.AppFormTableWithAllBorder {
+    width: 100%;
+    padding: 0 5px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    border: 1px solid #F0F0F0;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-collapse: collapse;
+    border-width: 1px 1px 1px 1px;
+}
+
+    .AppFormTableWithAllBorder th {
+        font-size: 11px;
+        font-weight: bold;
+        color: #000000;
+        border: 1px solid #F0F0F0;
+        border-width: 1px 1px 1px 1px;
+        padding: 5px;
+        letter-spacing: 0.04em;
+        background-color: #FFBB84;
+    }
+
+    .AppFormTableWithAllBorder td {
+        border: 1px solid #F0F0F0;
+        border-width: 1px 1px 1px 1px;
+        padding: 5px;
+        font-size: 11px;
+    }
+
+.AppFormTableWithOutBorder {
+    width: 100%;
+    padding: 0 3px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    /*font-weight:bold;*/
+    border: 0px solid #c8c8c8;
+    /*Border Color*/
+    background-color: #FFFFFF;
+    /*Background Color*/
+    color: #000000;
+    /*Font Color*/
+    border-collapse: collapse;
+    border-width: 0;
+}
+
+    .AppFormTableWithOutBorder th {
+        font: 11px solid Verdana;
+        font-weight: bold;
+        color: rgb(85, 85, 85);
+        border: 0px solid #C0BEBE;
+        border-width: 0;
+        padding: 4px;
+        letter-spacing: 0.04em;
+        background-color: #F6F7F6;
+    }
+
+    .AppFormTableWithOutBorder .head {
+        /*background-color:#ffffff;*/
+        font: 11px solid Verdana;
+        font-weight: bold;
+        color: white;
+        border: 0px solid #729827;
+        letter-spacing: 0.03em;
+        border-width: 0;
+        padding: 4px;
+        text-align: center;
+    }
+
+    .AppFormTableWithOutBorder td {
+        border: 0px solid #C0BEBE;
+        border-width: 0;
+        padding: 4px;
+        font-size: 14px;
+        background: #fbfbfb;
+    }
+
+    .AppFormTableWithOutBorder input {
+        border: 1px solid #c7d3e0;
+        font-size: 11px;
+        height: 22px;
+        background-color: White;
+        border-radius: 4px;
+        padding: 3px;
+    }
+
+    .AppFormTableWithOutBorder select {
+        border: 1px solid #F0F0F0;
+        font-size: 11px;
+        height: 25px;
+    }
+
+
+/*Table used for alignment- End*/
+
+
+/*Button style*/
+
+.InputButton {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    /* white-space: nowrap; */
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: white;
+    text-decoration: none !important;
+    letter-spacing: 1px;
+}
+
+.InputButton-main {
+    font-size: 11px;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 28px !important;
+    background-color: #c00201;
+    /*  
+   border:0px solid #075c78; 
+   background-image:url(images/inputbutton-bg.jpg ); 
+   background-repeat:repeat-x; padding:0; margin:0;  */
+    background-color: #ffff;
+    border-top-style: solid;
+    border-top-color: #949294;
+    border-top-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #949294;
+    border-bottom-width: 1px;
+    border-left-style: solid;
+    border-left-color: #949294;
+    border-left-width: 8px;
+    border-right-style: solid;
+    border-right-color: #949294;
+    border-right-width: 1px;
+}
+
+
+/* Show Message */
+
+.ShowMessage div {
+    color: #000 !important;
+    border: 1px dotted #A4A4A4;
+    /*border-width:0 1px;*/
+    /*border:0 solid #e5e5e5;
+	border-width:0 1px;*/
+    padding: 10px 10px 0px 10px;
+    background: #eadecd;
+    /* #F8EFFB;*/
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    min-height: 30px;
+    _height: 25px;
+    clear: left;
+    width: 97%;
+    ;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.ShowMessage .b1,
+.ShowMessage .b2,
+.ShowMessage .b3,
+.ShowMessage .b4 {
+    clear: none;
+    display: block;
+    overflow: hidden;
+    height: 1px;
+    font-size: 1px;
+}
+
+.ShowMessage .b2,
+.ShowMessage .b3,
+.ShowMessage .b4 {
+    border: 0 solid #e5e5e5;
+    border-width: 0px 1px;
+    background: #EFEFFF;
+}
+
+.ShowMessage .b1 {
+    margin: 0 5px;
+    background: #e5e5e5;
+    width: 691px;
+}
+
+.ShowMessage .b2 {
+    margin: 0 3px;
+    height: 1px;
+    border-width: 0px 2px;
+    width: 691px;
+}
+
+.ShowMessage .b3 {
+    margin: 0 2px;
+    width: 694px;
+}
+
+.ShowMessage .b4 {
+    margin: 0 1px;
+    height: 2px;
+    width: 696px;
+}
+
+.ShowMessage div img {
+    float: left;
+    /*margin:0 10px 0 0;*/
+    height: 38px;
+    margin: -8px 5px 0 -20px;
+}
+
+    .ShowMessage div img[src^="../Images/ShowMessage_TecErr.gif"] {
+        float: left;
+        /*margin:0 10px 0 0;*/
+        height: 38px;
+        margin: 0px 5px 0 -5px;
+    }
+
+.ShowMessage div br {
+    clear: none;
+}
+
+.ShowMsg-HyperLink {
+    color: Blue;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .ShowMsg-HyperLink:hover {
+        color: #75252B;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+
+/* Show Message- End */
+
+
+/*.loginButnBg{
+	background:url(images/login-btn-bg.png) no-repeat top left; 
+	width:60px;
+	height:22px; 
+	; 
+	font-size:12px !important; 
+	font-weight:bold;    
+	color:#000000!important; text-align:center; padding-top:2px !important;  
+	}*/
+
+.loginButnBg {
+    background: url(images/login-btn-bg.png) no-repeat top left;
+    width: 91px;
+    height: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    text-align: center;
+    padding-top: 4px !important;
+}
+
+.grid-header-text {
+    font-size: 12px;
+}
+
+.checkbox-btn input {
+    border: 0px !important;
+}
+
+.radio-btn input {
+    border: 0px !important;
+}
+
+.gray-bg-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: Black;
+    padding: 3px 3px 5px 3px;
+    text-align: left;
+}
+
+.gray-bg-text1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: Black;
+    padding: 3px 3px 0px 3px;
+    text-align: left;
+}
+
+.gray-bg-text2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #e2dfdf;
+    padding: 3px 3px 0px 3px;
+    text-align: left;
+}
+
+.ArtistDetails,
+.SportsDetails,
+.PassportAndVisaDetails {
+    display: none;
+}
+
+textarea {
+    resize: none;
+    font-family: 'poppins';
+}
+
+option {
+    font-family: 'poppins';
+}
+
+.AppFormTableWithOutBorder a {
+    text-decoration: underline !important;
+}
+
+.dashboard_user-details tbody td span {
+    color: white;
+    font-size: small !important;
+}
+
+input[type=radio] {
+    height: 30px;
+    vertical-align: middle;
+}
+@media only screen and (max-width: 768px) {
+    .AppFormTable td {
+        font-size: 11px !important;
+        padding: 8px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .AppFormTableWithOutBorder input {
+        font-size: 9.5px;
+    }
+}

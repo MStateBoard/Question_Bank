@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+body {
+	font-family: 'Poppins', sans-serif !important;
+}
+input {
+	font-family: 'Poppins', sans-serif !important;
+}
+.ExpanderMenu
+{
+	margin:0;
+	padding:0;
+	background:transparent;
+	width:100%;
+}
+/* Style 1 - Start */
+.ExpanderMenu .Style1
+{
+	background:transparent;
+	padding-bottom:0px;
+	overflow:hidden;
+}
+.ExpanderMenu .Style1 .b1, .ExpanderMenu .Style1 .b2, .ExpanderMenu .Style1 .b3, .ExpanderMenu .Style1 .b4,
+.ExpanderMenu .Style1 .b5, .ExpanderMenu .Style1 .b6, .ExpanderMenu .Style1 .b7, .ExpanderMenu .Style1 .b8
+{
+	/*display:block; */
+	overflow:hidden;
+	height:1px;
+	font-size:1px; background:#fff;
+}
+.ExpanderMenu .Style1 .b2, .ExpanderMenu .Style1 .b3, .ExpanderMenu .Style1 .b4,
+.ExpanderMenu .Style1 .b5, .ExpanderMenu .Style1 .b6, .ExpanderMenu .Style1 .b7
+{
+	/*border-left:1px solid; 
+	border-right:1px solid;
+	border-color:#996699*/;/*Border Color*/
+}
+.ExpanderMenu .Style1 .b2, .ExpanderMenu .Style1 .b3, .ExpanderMenu .Style1 .b4
+{
+	/*background:#996699;*//*Head Color*/
+	
+}
+.ExpanderMenu .Style1 .b5, .ExpanderMenu .Style1 .b6, .ExpanderMenu .Style1 .b7
+{
+	/*background:#efefef;Body Color*/
+}
+.ExpanderMenu .Style1 .b1, .ExpanderMenu .Style1 .b8
+{
+	margin:0 5px; 
+	background:#996699;/*Border Color*/
+}
+.ExpanderMenu .Style1 .b2, .ExpanderMenu .Style1 .b7
+{
+	margin:0 3px; 
+	height:1px;
+	border-width:0 2px;
+}
+.ExpanderMenu .Style1 .b3, .ExpanderMenu .Style1 .b6
+{
+	margin:0 2px;
+}
+.ExpanderMenu .Style1 .b4, .ExpanderMenu .Style1 .b5
+{
+	margin:0 1px; 
+	height:2px; 
+}
+	.ExpanderMenu .Style1 .MenuHead {
+		margin: 0px;
+		padding: 10px;
+		display: block;
+		border: 0px solid;
+		border-color: #d1d1d1; /*Border Color*/
+		position: relative;
+		font-size: 15px;
+		/*text-transform:uppercase;*/
+		background-color: #124c84; /*ACB4D7;/*Head Color*/
+		color: #fff; /*Head Font Color*/
+		width: 100%;
+		/*#filter:progid:DXImageTransform.Microsoft.Gradient(endColorstr='#75252b', startColorstr='#c87611', gradientType='0');
+	#ms-filter:progid:DXImageTransform.Microsoft.Gradient(endColorstr='#75252b', startColorstr='#c87611', gradientType='0');for IE8
+	background-image: -moz-linear-gradient(top, #c87611, #75252b);
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#c87611), to(#75252b));*/
+	}
+.ExpanderMenu .Style1 .MenuHead img
+{
+	position:absolute;
+	right:15px;
+}
+	.ExpanderMenu .Style1 .MenuLinks {
+		display: block;
+		padding: 0px;
+		background: #d0e1f1; /*#E4EEF9;/*Body Color*/
+		overflow: hidden;
+	}
+.ExpanderMenu .Style1 .MenuLinks .LinkBox
+{
+	display:block;
+	width:100%;
+}
+.ExpanderMenu .Style1 .MenuLinks .Link, .ExpanderMenu .Style1 .MenuLinks .FirstLink
+{
+	width:100%;
+	min-height:32px;
+	border-bottom: 1px solid #ffffff;
+}
+/* .ExpanderMenu .Style1 .MenuLinks .Link
+{
+	
+	border-top:solid 1px;
+	border-color:#bbd1e4;Border Color
+} */
+.ExpanderMenu .Style1 .MenuLinks .Number
+{
+	background: #25aadd;/*Disabled background*/
+	text-align:center;
+}
+.ExpanderMenu .Style1 .MenuLinks .Number a
+{
+	font-size:10px;
+	font-weight:bold;
+	color: #999999;/*Disabled foreground*/
+}
+.ExpanderMenu .Style1 .MenuLinks .Disabled
+{
+	background: #f7f3f7!important;/*Disabled background*/
+}
+.ExpanderMenu .Style1 .MenuLinks .Disabled a
+{
+	color: #a3a3a3!important;/*Disabled foreground*/
+}
+.ExpanderMenu .Style1 .MenuLinks a
+{
+	padding:8px 10px;
+	font-size:14px;
+	
+	display:block;	
+	color:#041e33 ;/*6F859A;/*Body Font Color*/
+	text-decoration:none;
+	BORDER:none; 
+	font-weight:normal;
+	letter-spacing:normal;  
+	line-height:24px; 
+}
+	.ExpanderMenu .Style1 .MenuLinks a:hover {
+		background-color: #3070ae;
+		color: #fff;
+		font-weight: normal;
+	}
+.ExpanderMenu .Style1 .MenuLinks a:hover font {
+	color: #efefef;
+}
+/* Style 1 - End */
+
+/* Style 2 - Start */
+
+.LinkBox .Link  :active 
+{
+    background-color: #aec8e2;
+}
+.ExpanderMenu .Style2
+{
+	margin:0;
+	padding:0;
+	background:transparent;
+	overflow:hidden;
+}
+.ExpanderMenu .Style2 .b1, .ExpanderMenu .Style2 .b2, .ExpanderMenu .Style2 .b3, .ExpanderMenu .Style2 .b4,
+.ExpanderMenu .Style2 .b5, .ExpanderMenu .Style2 .b6, .ExpanderMenu .Style2 .b7, .ExpanderMenu .Style2 .b8
+{
+	display:block; 
+	overflow:hidden; 
+	height:1px;
+	font-size:1px;
+	background:#ffffff;/*Background*/
+}
+.ExpanderMenu .Style2 .b2, .ExpanderMenu .Style2 .b3, .ExpanderMenu .Style2 .b4,
+.ExpanderMenu .Style2 .b5, .ExpanderMenu .Style2 .b6, .ExpanderMenu .Style2 .b7
+{
+	border-left:1px solid; 
+	border-right:1px solid;
+	border-color:#996699;/*Background*/
+}
+.ExpanderMenu .Style2 .b1, .ExpanderMenu .Style2 .b8
+{
+	margin:0 5px; 
+	background:#ffdc9f;
+}
+.ExpanderMenu .Style2 .b2, .ExpanderMenu .Style2 .b7
+{
+	margin:0 3px; 
+	height:1px;
+	border-width:0 2px;
+}
+.ExpanderMenu .Style2 .b3, .ExpanderMenu .Style2 .b6
+{
+	margin:0 2px;
+}
+.ExpanderMenu .Style2 .b4, .ExpanderMenu .Style2 .b5
+{
+	margin:0 1px; 
+	height:2px; 
+}
+.ExpanderMenu .Style2 .MenuHead
+{
+	border: 1px solid #fcd1b1;
+	border-width: 0 1px;
+	text-align: center;
+	margin: 0;
+	padding: 0 0 2px 8px;
+	display: block;
+	font-weight: bold;
+	
+	font-size: 13px;
+	background: #ffffff; /*Background*/
+	color: #330081;
+}
+.ExpanderMenu .Style2 .MenuLinks
+{
+	padding: 2px;
+	text-align: center;
+	background: #ffffff; /*Background*/
+	border :1px solid #fcd1b1;
+	border-width:0 1px;
+}
+.ExpanderMenu .Style2 .MenuLinks .LinkBox
+{
+	display:block;
+	width:100%;
+}
+.ExpanderMenu .Style2 .Link, .ExpanderMenu .Style2 .FirstLink
+{
+	text-align:left;
+	margin: 2px 8px 0 8px;
+	width:100%;
+	background:#ffffff;/*Button background*/
+	background-image:url('../Images/LM5.gif');
+	background-repeat:repeat-X;
+}
+.ExpanderMenu .Style2 .FirstLink
+{
+	margin:0 8px;	
+}
+.ExpanderMenu .Style1 .MenuLinks .Number
+{
+	background: #25aadd;/*Disabled background*/
+	text-align:center;
+}
+.ExpanderMenu .Style1 .MenuLinks .Number a
+{
+	font-size:200%;
+	font-weight:bold;
+	color: #999999;/*Disabled foreground*/
+	background-color:#fff;
+}
+.ExpanderMenu .Style1 .MenuLinks .Disabled
+{
+	background:#f7f7f7;/*Disabled background*/
+}
+.ExpanderMenu .Style1 .MenuLinks .Disabled a
+{
+	color: #999999;/*Disabled foreground*/
+}
+.ExpanderMenu .Style2 .Link a, .ExpanderMenu .Style2 .FirstLink a
+{
+	margin: 3px 0 0 9px;
+	padding:0;
+	display:block; 	
+	color:#ffffff;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;	
+	}
+.ExpanderMenu .Style2 .Link a:hover, .ExpanderMenu .Style2 .FirstLink a:hover
+{
+	color: #000067;
+}
+/* Style 2 - End */

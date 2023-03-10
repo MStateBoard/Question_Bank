@@ -1,0 +1,320 @@
+﻿@model IEnumerable<Question_Bank.Models.Tbl_Question_Data>
+@{
+    ViewBag.Title = "Create Question Bank";
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .AppFormTable th {
+        border-collapse: collapse;
+        background-color: steelblue;
+        text-align: center;
+        color: white;
+    }
+
+    .AppFormTable td {
+        text-align: center;
+    }
+</style>
+
+<h2 align="center" style="font-family:'Times New Roman', Times, serif">Create Question Bank</h2>
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+
+<table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer1" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:10%;">Type of Questions</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:10%;">Fill in the Blanks</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">True/False</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Single Correct</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Double Correct </th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Triple Correct</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Match the Following</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Rearrange</th>
+            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:9%;">Theory Question</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th align="center">
+                Questions Added
+            </th>
+            <td align="center">
+                @ViewData["Q1"]
+            </td>
+            <td align="center">
+                @ViewData["Q2"]
+            </td>
+            <td align="center">
+                @ViewData["Q3"]
+            </td>
+            <td align="center">
+                @ViewData["Q4"]
+            </td>
+            <td align="center">
+                @ViewData["Q5"]
+            </td>
+            <td align="center">
+                @ViewData["Q6"]
+            </td>
+            <td align="center">
+                @ViewData["Q7"]
+            </td>
+            <td align="center">
+                @ViewData["Q8"]
+            </td>
+        </tr>
+    </tbody>
+</table><br />
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+
+
+@if (Model != null)
+{
+    <div class="table-responsive pt-3  ">
+        <center>
+            <table class="AppFormTable" id="que_tbl" style="background-color: #e7fafe;">
+                <thead>
+                    <tr>
+                        <th style="width:5%">
+                            Sr. No
+                        </th>
+                        <th style="width:5%">
+                            Class
+                        </th>
+                        <th style="width:5%">
+                            Subject
+                        </th>
+                        <th style="width:5%">
+                            Question Type
+                        </th>
+                        <th style="width:5%">
+                            Submitted Question Type
+                        </th>
+                        <th style="width:50%">
+                            Question
+                        </th>
+                        @*<th>
+                                Option A
+                            </th>
+                            <th>
+                                Option B
+                            </th>
+                            <th>
+                                Option C
+                            </th>
+                            <th>
+                                Option D
+                            </th>
+                            <th>
+                                Option E
+                            </th>
+                            <th>
+                                Option F
+                            </th>
+                            <th>
+                                Answer1
+                            </th>
+                            <th>
+                                Answer2
+                            </th>
+                            <th>
+                                Answer3
+                            </th>*@
+                        <th style="width:5%">
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        if (item.Question == null)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@i</span>
+                                    @Html.Hidden("hd_id", item.ID)
+                                    @{i++;}
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Class)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Subject)
+                                </td>
+                                <td>
+
+                                    @Html.DropDownListFor(model => item.Question_Type, new List<SelectListItem> {
+                                     new SelectListItem { Text = "--Select Type--", Value = "0"},
+                                     new SelectListItem{Text="Fill in the Blanks", Value="Fill in the Blanks"},
+                                     new SelectListItem{Text="True/False", Value="True/False"},
+                                     new SelectListItem{Text="Single Correct", Value="Single Correct"},
+                                     new SelectListItem{Text="Double Correct", Value="Double Correct"},
+                                     new SelectListItem{Text="Triple Correct", Value="Triple Correct"},
+                                     new SelectListItem{Text="Match the Following", Value="Match the Following"},
+                                     new SelectListItem{Text="Rearrange", Value="Rearrange"},
+                                     new SelectListItem{Text="Theory Question", Value="Theory Question"},
+                                     }, new { @id = "ddlgrade1", @class = "ddlqtype" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => item.Question_Type)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => item.Question, new { id = "question", @class = "form-control", @placeholder = "Question", @name = "Question", @required = "required" })
+                                    <br>
+                                    <div id="@item.ID" class="option"></div>
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(model => item.Option1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Option2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Option3)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Option4)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Option5)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Option6)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Answer1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Answer2)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.Answer3)
+                                    </td>*@
+                                <td>
+                                    <button type="button" class="btn btn-outline-success" id="btn-sub" name="btn-sub">Add/Edit</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table><br />
+
+        </center>
+    </div>
+    <center>
+
+    </center>
+
+}
+
+<script>
+    $(document).ready(function () {
+        $('.ddlqtype').on('change', function () {
+
+            var row = $(this).closest('tr');
+            var div_id = row.find("input[id=hd_id]").val();
+            var Question_Type = row.find("td:eq(3) #ddlgrade1 :selected").val();
+            if (Question_Type == "Single Correct") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<input type="text" id="op1" class="options" placeholder = "Option A"> <input type="text" id="op2" class="options" placeholder = "Option B"><br> <input type="text" id="op3" class="options" placeholder = "Option C"> <input type="text" id="op4" class="options" placeholder = "Option D"><br><select name = "sans1" id = "ans1" ><option value="0">--Select Answer--</option><option value="A">A</option><option value="B">B</option>');
+
+            }
+            if (Question_Type == "Double Correct") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<input type="text" id="op1" class="options" placeholder = "Option A"> <input type="text" id="op2" class="options" placeholder = "Option B"><br> <input type="text" id="op3" class="options" placeholder = "Option C"> <input type="text" id="op4" class="options" placeholder = "Option D"><br> <select name = "ans1" id = "ans1" ><option value="0">--Select Answer1--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select > <select name = "dans2" id = "ans2" ><option value="0">--Select Answer2--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select >');
+
+            }
+            if (Question_Type == "Triple Correct") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<input type="text" id="op1" class="options" placeholder = "Option A"> <input type="text" id="op2" class="options" placeholder = "Option B"> <br><input type="text" id="op3" class="options" placeholder = "Option C"> <input type="text" id="op4" class="options" placeholder = "Option D"><br> <input type="text" id="op5" class="options" placeholder = "Option E"> <input type="text" id="op6" class="options" placeholder = "Option F"> <br> <select name = "ans1" id = "ans1" ><option value="0">--Select Answer1--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select > <select name = "ans2" id = "ans2" ><option value="0">--Select Answer2--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select > <select name = "ans3" id = "ans3" ><option value="0">--Select Answer3--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select >');
+
+            }
+            if (Question_Type == "Fill in the Blanks") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<input type="text" id="op1" class="options" placeholder = "Answer">');
+
+            }
+            if (Question_Type == "True/False") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<select name = "ans1" id = "ans1" ><option value="0">--Select Answer--</option><option value="True">True</option><option value="False">False</option>');
+
+            }
+            if (Question_Type == "Match the Following") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<input type="text" id="head1" class="options" placeholder = "Heading 1"> <br><input type="text" id="op1" class="options" placeholder = "Option 1"> <input type="text" id="op2" class="options" placeholder = "Option 2"><br><input type="text" id="op3" class="options" placeholder = "Option 3"> <input type="text" id="op4" class="options" placeholder = "Option 4"> <br> <input type="text" id="head2" class="options" placeholder = "Heading 2"> <br> <input type="text" id="op5" class="options" placeholder = "Option A"><input type="text" id="op6" class="options" placeholder = "Option B"> <br> <input type="text" id="op7" class="options" placeholder = "Option C"><input type="text" id="op8" class="options" placeholder = "Option D"> <br><br> <input type="text" id="mop1" class="options" placeholder = "Option I"> <input type="text" id="mop2" class="options" placeholder = "Option II"><br> <input type="text" id="mop3" class="options" placeholder = "Option III"> <input type="text" id="mop4" class="options" placeholder = "Option IV"><br> <select name = "ans1" id = "ans1" ><option value="0">--Select Answer--</option><option value="Option I">Option I</option><option value="Option II">Option II</option><option value="Option III">Option III</option><option value="Option IV">Option IV</option></select >');
+            }
+            if (Question_Type == "Rearrange") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<input type="text" id="op1" class="options" placeholder = "Option A"> <input type="text" id="op2" class="options" placeholder = "Option B"><br> <input type="text" id="op3" class="options" placeholder = "Option C"> <input type="text" id="op4" class="options" placeholder = "Option D"><br> <select name = "ans1" id = "ans1" ><option value="0">--Select Answer--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select >');
+
+            }
+            if (Question_Type == "Theory Question") {
+                $("#" + div_id).html("");
+                $("#" + div_id).append('<textarea id="tans1" name="tans1" rows="8" cols="50" placeholder = "Enter Answer"></textarea> <br> <input type="text" id = "marks" name = "marks" placeholder = "Enter Marks"/>');
+
+            }
+        });
+
+        $('#que_tbl').on('click', '.btn-outline-success', function () {
+            var row = $(this).closest('tr');
+            /*  if (confirm('Please Check if everything is Correct!') == true) {*/
+            $.ajax({
+                type: "POST",
+                url: "/Question/Add_Question",
+                data: {
+                    ID: row.find("input[id=hd_id]").val(),
+                    Question_Type: row.find("td:eq(3) #ddlgrade1 :selected").val(),
+                    Question: row.find("input[id=question]").val(),
+                    Option1: row.find("input[id=op1]").val(),
+                    Option2: row.find("input[id=op2]").val(),
+                    Option3: row.find("input[id=op3]").val(),
+                    Option4: row.find("input[id=op4]").val(),
+                    Option5: row.find("input[id=op5]").val(),
+                    Option6: row.find("input[id=op6]").val(),
+                    Option7: row.find("input[id=op7]").val(),
+                    Option8: row.find("input[id=op8]").val(),
+                    MOption1: row.find("input[id=mop1]").val(),
+                    MOption2: row.find("input[id=mop2]").val(),
+                    MOption3: row.find("input[id=mop3]").val(),
+                    MOption4: row.find("input[id=mop4]").val(),
+
+                    Heading1: row.find("input[id=head1]").val(),
+                    Heading2: row.find("input[id=head2]").val(),
+
+                    Ans1: row.find("#ans1 :selected").val(),
+                    TAns1: row.find("textarea").val(),
+                    Ans2: row.find("#ans2 :selected").val(),
+                    Ans3: row.find("#ans3 :selected").val(),
+
+                    Marks: row.find("input[id=marks]").val(),
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.Result) {
+                        Success_Alert_Reload(data.Response);
+                    }
+                    else {
+                        Error_Alert(data.Response);
+                    }
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+
+            });
+            /* }*/
+        });
+    });
+</script>

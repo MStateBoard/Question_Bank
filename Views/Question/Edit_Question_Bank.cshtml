@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Edit_Question_Bank";
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+<style>
+    .AppFormTable th {
+        background-color: steelblue;
+        text-align: center;
+        color: white;
+    }
+
+    #tbl_user th, td {
+        text-align: center;
+    }
+</style>
+
+<h2 align="center">Edit Question Bank</h2>
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<script src="~/Design/JS/Project_JS/Edit_Question_Bank.js"></script>
+
+<form id="user">
+    @*<div class="container">*@
+        <div class="row justify-content-center">
+            @Html.Hidden("UserID", TempData["User_ID"])
+            @Html.Hidden("ID")
+
+            <div class="col-lg-1">
+                <label>Select Class :</label><span style="color:Red">*</span><br>
+                @Html.DropDownList("Class", ViewBag.ClassList as SelectList, new { @class = "form-control form-select" })
+            </div>
+            <div class="col-lg-1">
+                <label>Select Subject :</label><span style="color:Red">*</span>
+                @Html.DropDownList("Subject", new SelectList(string.Empty, "Value", "Text"), "--Select Subject--", new { @class = "form-control form-select" })
+
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Question Type :</label><span style="color:Red">*</span>
+                @Html.TextBox("Question_Type", "", new { @class = "form-control", @placeholder = "Question Type", @required = "required" })
+            </div>
+            <div class="col-lg-8">
+                <label>Enter Question :</label><span style="color:Red">*</span>
+                @Html.TextBox("Question", "", new { @class = "form-control", @placeholder = "Question", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Option1 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Option1", "", new { @class = "form-control", @placeholder = "Option1", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Option2 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Option2", "", new { @class = "form-control", @placeholder = "Option2", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Option3 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Option3", "", new { @class = "form-control", @placeholder = "Option3", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Option4 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Option4", "", new { @class = "form-control", @placeholder = "Option4", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Option5 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Option5", "", new { @class = "form-control", @placeholder = "Option5", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Option6 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Option6", "", new { @class = "form-control", @placeholder = "Option6", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Answer1 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Ans1", "", new { @class = "form-control", @placeholder = "Answer1", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Answer2 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Ans2", "", new { @class = "form-control", @placeholder = "Answer2", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Answer3 :</label><span style="color:Red">*</span>
+                @Html.TextBox("Ans3", "", new { @class = "form-control", @placeholder = "Answer3", @required = "required" })
+            </div>
+            <div class="col-lg-2">
+                <label>Enter Marks :</label><span style="color:Red">*</span>
+                @Html.TextBox("Marks", "", new { @class = "form-control", @placeholder = "Marks", @required = "required" })
+            </div>
+        </div><br>
+        <center>
+            <button type="button" class="btn btn-success" id="btn_submit">Submit</button>
+        </center>
+    @*</div>*@
+    <br>
+
+    <div class="row" style="border:inset 2px  #3eadcf"></div>
+    <br />
+    <div class="row">
+        <table id="Tbl2" class="AppFormTable">
+
+            <tr>
+                <th align="left"><font size="2">Question Bank Data</font></th>
+            </tr>
+
+            <tr>
+                <td>
+                    <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                        <thead>
+                            <tr>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sr.No.</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Class</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Subject</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Question Type</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:200%;">Question</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option1</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option2</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option3</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option4</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option5</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Option6</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer1</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer2</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Answer3</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Marks</th>
+                                <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl_user"></tbody>
+                    </table>
+                    <br>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</form>
+
+

@@ -1,0 +1,228 @@
+﻿
+@{
+    ViewBag.Title = "Edit_Student";
+    Layout = "~/Views/Shared/Form_Layout.cshtml";
+}
+
+<style>
+    .AppFormTable th {
+        background-color:steelblue;
+        text-align: center;
+        color:white;
+    }
+    table th,td {
+        text-align: center;
+    }
+</style>
+
+<h2 align="center">Edit Student</h2>
+
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="user">
+    @Html.Hidden("ID")
+    <div class="container">
+        <div class="row">
+            @Html.Hidden("ID")
+     
+                <div class="col-sm-3">
+                    <label>Index No :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Index_No", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>Class :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Class_ID", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>Division :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Division_ID", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>GR No :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("GR_No", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>Name :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Name", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>Roll No :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Seat_No", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>Mobile No :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Mobile_No", "", new { @class = "form-control " })
+                </div>
+                <div class="col-sm-3">
+                    <label>Email ID :</label><span style="color:Red">*</span><br>
+                    @Html.TextBox("Email_ID", "", new { @class = "form-control " })
+                </div>
+         
+        </div>
+    </div> <br>
+
+    <center>
+        <button type="button" class="btn btn-success" id="btn_submit">Submit</button>
+    </center> <br>
+    <div class="row" style="border:inset 2px  #3eadcf"></div>
+    <br />
+    <table id="Tbl2" class="AppFormTable">
+
+        <tr>
+            <th align="center"><font size="2">Student Information </font></th>
+        </tr>
+
+        <tr>
+            <td>
+                <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Sr.No.</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Index No</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Class</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Division</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">GR No</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:10%;">Name</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Seat No</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Mobile No</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Email ID</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Edit</th>
+                            <th class="Header" align="center" valign="middle" scope="col" style="font-weight:bold;width:5%;">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_user"></tbody>
+                </table>
+                <br>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+<script>
+
+
+
+    $(document).ready(function () {
+        Bind_Part();
+        $('#user').find("#ID").val(0);
+        $("#btn_submit").click(function (e) {
+            debugger
+            var formData = new FormData($(user)[0]);
+            console.log(formData);
+            $.ajax({
+                url: "Edit_Student",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    Showloader();
+                },
+                complete: function () {
+                    Hideloader();
+                },
+                success: function (Data) {
+                    debugger;
+                    if (Data.Result) {
+                        Success_Alert(Data.Response);
+                        $(user)[0].reset();
+                        $('#user').find("#ID").val(0);
+                        Bind_Part();
+
+                    }
+                    else {
+                        Error_Alert(Data.Response);
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    Error_Alert(Data.Message);
+                }
+
+            });
+        });
+
+    });
+
+
+    function Bind_Part() {
+        $.ajax({
+            url: "Get_Data",
+            type: "POST",
+            dataType: 'json',
+            data: {
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (Data) {
+                debugger
+                var temp = "";
+                if (Data.Result) {
+                    $("#tbl_user").empty();
+                    $.each(Data.Response, function (i, data) {
+                        var editurl = "EditStudentInfo('/Student/Get_Class_Record/" + data.ID + "')";
+                        var delurl = "DelStudentInfo('/Student/Delete_Class_Record/" + data.ID + "')";
+                        temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Index_No + `</td><td>` + data.Class_ID + `</td><td>` + data.Division_ID + `</td><td>` + data.GR_No + `</td><td>` + data.Name + `</td><td>` + data.Seat_No + `</td><td>` + data.Mobile_No + `</td><td>` + data.Email_ID + `</td><td>` + `<input type = "button" value = "Edit" onclick = ` + editurl + ` class="btn btn-warning"/>` + `</td><td>` + `<input type = "button" value = "Delete" onclick="` + delurl + `" class="btn btn-danger"/>` + `</td></tr>`;
+
+                    });
+                    $("#tbl_user").append(temp);
+                }
+                else {
+                    Error_Alert(Data.Response);
+                }
+
+            },
+            error: function (e1, e2, e3) {
+                Error_Alert(Data.Message);
+            }
+        });
+    }
+
+    function EditStudentInfo(url) {
+        debugger
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (data) {
+                if (data.Result) {
+                    $('#Index_No').val(data.Response.Index_No);
+                    $('#Class_ID').val(data.Response.Class_ID);
+                    $('#Division_ID').val(data.Response.Division_ID);
+                    $('#GR_No').val(data.Response.GR_No);
+                    $('#Name').val(data.Response.Name);
+                    $('#Seat_No').val(data.Response.Seat_No);
+                    $('#Mobile_No').val(data.Response.Mobile_No);
+                    $('#Email_ID').val(data.Response.Email_ID);
+                    $('#user').find("#ID").val(data.Response.ID);
+
+                }
+            }
+        });
+    }
+
+    function DelStudentInfo(url) {
+        debugger
+        if (confirm('Are you sure want to delete this record ?') == true) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: function (data) {
+                    if (data.Result) {
+                        Bind_Part();
+                        $(user)[0].reset();
+                        Success_Alert(data.Response);
+                    }
+                    else {
+                        Error_Alert(data.Response);
+                    }
+                }
+            });
+        }
+    }
+
+</script>

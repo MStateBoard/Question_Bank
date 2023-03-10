@@ -1,0 +1,213 @@
+﻿@model Question_Bank.Models.Exam_Login
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="PrathamArt">
+
+    <title>MSC | Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Design/CSS/sb-admin-2.css" rel="stylesheet" />
+    <style>
+        .state-logo {
+            background-color: #080863;
+            text-align: center;
+            padding: 5% 30px 5% 30px;
+            text-transform: capitalize;
+            color: #fff;
+        }
+
+        .custom-control {
+            display: inline-block;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="container">
+        @using (Html.BeginForm("Exam_Login", "IT_Exam", new { area = "Exam_Module" }))
+        {
+            <!-- Outer Row -->
+
+            <div class="row justify-content-center">
+
+                <div class="col-xl-10 col-lg-12 col-md-9">
+
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="col-lg-6 d-none d-lg-block state-logo">
+                                    <img src="~/Design/Images/MSBSHSE-LOGO.png" class="img img-responsive" />
+                                    <h2 style="font-family:'Times New Roman', Times, serif">Maharashtra State Board of Secondary and Higher Secondary Education</h2>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Welcome</h1>
+                                            <p>College Index Number</p>
+                                            <p><input type="text" name="Index_No" style="border:none; text-align:center" value="@Model.Index_No" readonly></p>
+                                            <p>Date: <b id="date"></b></p>
+                                        </div>
+                                        <form class="user">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" name="Seat_No" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Seat Number">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="checkbox" class="custom-control-input" name="Stream" id="customCheck" value="Science">
+                                                    <label class="custom-control-label" for="customCheck">Science</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="checkbox" class="custom-control-input" name="Stream" id="customCheck1" value="Arts">
+                                                    <label class="custom-control-label" for="customCheck1">Arts</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="checkbox" class="custom-control-input" name="Stream" id="customCheck2" value="Commerce">
+                                                    <label class="custom-control-label" for="customCheck2">Commerce</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" name="Password" id="exampleInputPassword" placeholder="Invigilator Signature">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox small">
+                                                    <p style="color:red;">(Invigilator Should Check all the data filled by Student)</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <span style="color:red">@TempData["Err"]</span>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <span style="color:red">@TempData["Msg"]</span>
+                                            </div>
+                                            <div class="form-group text-right">
+                                                <input type="submit" class="btn btn-primary btn-user" data-toggle="modal" data-target="#logoutModal" value="Login" />
+
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+
+        <!-- Login Modal-->
+        <!--<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">-->
+        <!--</div><div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready for Exam?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>-->
+        <!--<div class="modal-body">Login Successful</div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" href="../Exam">Ok</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>-->
+        <!-- Bootstrap core JavaScript-->
+        <script src="~/Design/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Design/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="~/Design/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Design/JS/sb-admin-2.min.js"></script>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function (e) {
+
+        window.onpopstate = () => history.forward();
+
+        if (navigator.userAgent.search("MSIE") >= 0) {
+            alert("Please Use Chrome");
+            window.location = "../Exam/Exam_Login";
+        }
+        else if (navigator.userAgent.search("Chrome") >= 0) {
+            console.log("chrome");
+        }
+        else if (navigator.userAgent.search("Firefox") >= 0) {
+            alert("Please Use Chrome");
+            window.location = "../Exam/Exam_Login";
+        }
+        else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+            alert("Please Use Chrome");
+            window.location = "../Exam/Exam_Login";
+        }
+        else if (navigator.userAgent.search("Opera") >= 0) {
+            alert("Please Use Chrome");
+            window.location = "../Exam/Exam_Login";
+        }
+
+        (function () {
+            function checkTime(i) {
+                return (i < 10) ? "0" + i : i;
+            }
+
+            function startTime() {
+
+                var today = new Date(),
+
+                date = today.getDate();
+                month = today.getMonth() + 1;
+                year = today.getFullYear();
+                h = checkTime(today.getHours()),
+                hr = h - 12;
+                m = checkTime(today.getMinutes()),
+                s = checkTime(today.getSeconds());
+
+                if (hr > 0) {
+                    document.getElementById('date').innerHTML = date + "/" + month + "/" + year + " " + hr + ":" + m + " PM ";
+                }
+                else {
+                    document.getElementById('date').innerHTML = date + "/" + month + "/" + year + " " + h + ":" + m + " AM ";
+                }
+
+                t = setTimeout(function () {
+                    startTime()
+                }, 1000);
+            }
+            startTime();
+        })();
+
+    });
+</script>

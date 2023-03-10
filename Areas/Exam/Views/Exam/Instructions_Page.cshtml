@@ -1,0 +1,216 @@
+﻿@model Question_Bank.Models.Exam_Login
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>MSB | Instruction Page</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Design/CSS/sb-admin-2.css" rel="stylesheet">
+
+    <style>
+
+        .table {
+            color: #616060;
+            font-weight: bold;
+        }
+
+            .table th, .table td {
+                padding: 4px;
+                vertical-align: middle;
+                border-top: 1px solid #e3e6f0;
+            }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
+                    <img src="logo.png" class="img-fluid" style="width: 60px;" />
+                  <h2 class="" style="color:#fff;margin-left:20px;">maharashtra state board of secondary and higher secondary education</h2>
+
+                </nav>
+                End of Topbar -->
+                <!-- Content Row -->
+                <div class="row justify-content-center navbar p-0" style="background-color:var(--brand);">
+
+                    <!-- Content Column -->
+                    <div class="col-lg-1 text-right">
+                        <img src="~/Design/Images/MSBSHSE-LOGO.png" class="img-fluid" style="width:54%" />
+                    </div>
+                    <center>
+                        <!-- Content Column -->
+                        <div class="col-lg-9 pl-0">
+                            <h3 class="" style="color:#fff; margin-left:20px; font-family:'Times New Roman', Times, serif">
+                                Maharashtra State Board of Secondary and Higher Secondary Education
+                            </h3>
+                        </div>
+                    </center>
+                </div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin:15px 17% !important;color:red;">
+                        <h5 class="h5 mb-0 text-bold font-weight-bold ">@Model.Seat_No</h5>
+                        <h5 class="h5 mb-0 d-sm-inline-block font-weight-bold ">@DateTime.Now</h5>
+                    </div>
+
+
+                    <!-- Content Row -->
+                    <div class="row justify-content-center">
+
+                        <!-- Content Column -->
+                        <div class="col-lg-8 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <!--</div><div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-primary">Instructions</h6>
+                                </div>-->
+                                <div class="card-body p-0">
+                                    <table class="table table-bordered table-striped m-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width:50px;"></th>
+                                                <th scope="col">Colors and there meaning</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="btn btn-danger btn-block" style="height: 23px;border: 2px solid #0a0a0a;"></div>
+                                                </td>
+                                                <td>Answer Not Submited.</td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="btn btn-success btn-block" style="height: 23px;border: 2px solid #0a0a0a;"></div>
+                                                </td>
+                                                <td>Answer Submited.</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                </td>
+                                                <td class="color-pink">
+                                                    Paper will display 10 mins before the exam but students cannot attempt it. <br />
+                                                    All questions can be viewed by clicking on top or left panel buttons.
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                </td>
+                                                <td class="color-green">
+                                                    If you submit your answers and Relogin the System automatically detect and restore answer automatically.
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                </td>
+                                                <td>
+                                                    Handicap category shown on the top right <br />
+                                                    HC 0 - No Extra Time <br />
+                                                    HC1,4 - 50 minutes extra time. <br />
+                                                    HC 2,3,8,9 - 30 minutes extra time. <br />
+                                                    HC 5 - 2 hours extra time. <br />
+                                                    HC 6,7 - 1 hour extra time. <br />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                </td>
+                                                <td class="color-red">
+                                                    Submit Each and Every Question as you Solve it. <br />
+                                                    Do not wait to Submit till last minute.
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">
+                                                </td>
+                                                <td class="text-center">All The Best for Exam !!!!</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <div class="col-4 btn btn-success btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    Start Exam
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready for Exam?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Please select START to start the exam!</div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" href="../Exam/Exam/Exam">START</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="~/Design/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Design/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="~/Design/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Design/JS/sb-admin-2.min.js"></script>
+</body>
+
+</html>

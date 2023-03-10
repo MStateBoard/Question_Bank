@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Question_Bank_2022Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tbl_Division">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Class_ID" Type="Int32" />
+    <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Question_Data">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Marks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Question_Paper">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question_ID" Type="Int32" Nullable="false" />
+    <Property Name="Question_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Option6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Marks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Paper_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Student_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IPAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Record_ID" Type="Int32" />
+    <Property Name="Index_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Class_ID" Type="Int32" />
+    <Property Name="Division_ID" Type="Int32" />
+    <Property Name="Year_ID" Type="Int32" />
+    <Property Name="GR_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Subject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Year">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Question_Bank_2022Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_Division" EntityType="Self.Tbl_Division" />
+    <EntitySet Name="Tbl_Question_Data" EntityType="Self.Tbl_Question_Data" />
+    <EntitySet Name="Tbl_Question_Paper" EntityType="Self.Tbl_Question_Paper" />
+    <EntitySet Name="Tbl_Student_Details" EntityType="Self.Tbl_Student_Details" />
+    <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" />
+    <EntitySet Name="Tbl_Year" EntityType="Self.Tbl_Year" />
+    <EntitySet Name="Tbl_Create_School_College" EntityType="Question_Bank_2022Model.Tbl_Create_School_College" />
+    <EntitySet Name="Tbl_Admin" EntityType="Question_Bank_2022Model.Tbl_Admin" />
+    <EntitySet Name="Tbl_Flag" EntityType="Question_Bank_2022Model.Tbl_Flag" />
+    <EntitySet Name="Tbl_Question1" EntityType="Question_Bank_2022Model.Tbl_Question1" />
+    <EntitySet Name="Tbl_Question2" EntityType="Question_Bank_2022Model.Tbl_Question2" />
+    <EntitySet Name="Tbl_Question3" EntityType="Question_Bank_2022Model.Tbl_Question3" />
+    <EntitySet Name="Tbl_Question6" EntityType="Question_Bank_2022Model.Tbl_Question6" />
+    <EntitySet Name="Tbl_Question7" EntityType="Question_Bank_2022Model.Tbl_Question7" />
+    <EntitySet Name="Tbl_Question4" EntityType="Question_Bank_2022Model.Tbl_Question4" />
+    <EntitySet Name="Tbl_Question5" EntityType="Question_Bank_2022Model.Tbl_Question5" />
+    <EntitySet Name="Tbl_Student_Login" EntityType="Question_Bank_2022Model.Tbl_Student_Login" />
+    <EntitySet Name="Tbl_Student" EntityType="Question_Bank_2022Model.Tbl_Student" />
+    <EntitySet Name="Tbl_Student_Login_Details" EntityType="Question_Bank_2022Model.Tbl_Student_Login_Details" />
+  </EntityContainer>
+  <EntityType Name="Tbl_Create_School_College">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Institute_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile_No" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Email_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Flag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Start_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="End_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Total_Exam_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Tbl_Question1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Question2">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sub_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Index_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Question3">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Question6">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Question7">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Question4">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Question5">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Sub_Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Paper_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="Question_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Correct_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model_Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Student_Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="User_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Stream" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Paper_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sub_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_Student">
+    <Key>
+      <PropertyRef Name="Seat_No" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="IP_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Index_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Class_ID" Type="Int32" />
+    <Property Name="Division_ID" Type="Int32" />
+    <Property Name="GR_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile_No" Type="Double" />
+    <Property Name="Email_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tbl_Student_Login_Details">
+    <Key>
+      <PropertyRef Name="Seat_No" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Index_No" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Seat_No" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Exam_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login_Time" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

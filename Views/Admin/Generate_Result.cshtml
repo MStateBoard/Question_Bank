@@ -1,0 +1,1000 @@
+﻿@model Question_Bank.Models.Question_Paper_Model
+@{
+    ViewBag.Title = "Generate_Result";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<style>
+    .AppFormTable th {
+        background-color: steelblue;
+        text-align: center;
+        color: white;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #tbl_user td {
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    @using (Html.BeginForm("Generate_Result", "Admin", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-2">
+                <label>Enter Index No.:</label><span style="color:Red">*</span>
+                @Html.TextBox("Index_No", "", new { @class = "form-control", @placeholder = "Index No", @name = "Index_No", @required = "required" })
+            </div>
+            <div class="col-2">
+                <label>Select Question Type :</label><span style="color:Red">*</span>
+                @Html.DropDownList("QuestionType", new List<SelectListItem> {
+                new SelectListItem { Text = "--Select Type--", Value = "0"},
+                new SelectListItem{Text="Fill in the Blanks", Value="Fill in the Blanks"},
+                new SelectListItem{Text="True/False", Value="True/False"},
+                new SelectListItem{Text="Single Correct", Value="Single Correct"},
+                new SelectListItem{Text="Double Correct", Value="Double Correct"},
+                new SelectListItem{Text="Triple Correct", Value="Triple Correct"},
+                new SelectListItem{Text="Match the Following", Value="Match the Following"},
+                new SelectListItem{Text="Rearrange", Value="Rearrange"},
+                new SelectListItem{Text="Theory Question(6M)", Value="Theory Question(6M)"},
+                new SelectListItem{Text="Theory Question(8M)", Value="Theory Question(8M)"},
+                }, new { @class = "form-control form-select" })
+            </div>
+            <div class="col-2">
+                <label></label><br>
+                <input type="submit" name="submit" class="btn btn-success" value="Submit">
+            </div>
+        </div>
+        <br />
+
+        <div class="row" id="fitb">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">Fill In the Blanks</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q1)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q1)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q1)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q1)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+       
+
+        <div class="row" id="tf" style="display:none">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">True/Flase</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                        <th class="Header" style="font-weight:bold;">Q4</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q2)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q2)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q2)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q2)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+       
+
+        <div class="row" id="sc" style="display:none">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">Single Correct</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                        <th class="Header" style="font-weight:bold;">Q4</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q3)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q3)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q3)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q3)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+       
+
+        <div class="row" id="dc" style="display:none">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">Double Correct</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                        <th class="Header" style="font-weight:bold;">Q4</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q4)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q4)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer1 , @it.Answer2
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q4)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1 , @ans.Answer2
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q4)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+       
+
+        <div class="row" id="tc" style="display:none">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">Triple Correct</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                        <th class="Header" style="font-weight:bold;">Q4</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q5)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q5)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer1 , @it.Answer2 , @it.Answer3
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q5)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1 , @ans.Answer2 , @ans.Answer3
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q5)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+      
+        <div class="row" id="th6" style="display:none">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">Theory Question(6M)</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                        <th class="Header" style="font-weight:bold;">Q4</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q6)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q6)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q6)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q6)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+     
+
+        <div class="row" id="th8" style="display:none">
+            @if (Model != null)
+            {
+                <table id="Tbl2" class="AppFormTable">
+
+                    <tr>
+                        <th align="left"><font size="2">Theory Question(8M)</font></th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class="DataGrid" cellspacing="0" cellpadding="5" rules="all" id="rightContainer_ContentTable1_gvPreferencedOptionsList" style="border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th class="Header" style="font-weight:bold;">Sr.No.</th>
+                                        <th class="Header" style="font-weight:bold;">Index No</th>
+                                        <th class="Header" style="font-weight:bold;">Seat No</th>
+                                        <th class="Header" style="font-weight:bold;">Paper ID</th>
+                                        <th class="Header" style="font-weight:bold;">Type</th>
+                                        <th class="Header" style="font-weight:bold;">Q1</th>
+                                        <th class="Header" style="font-weight:bold;">Q2</th>
+                                        <th class="Header" style="font-weight:bold;">Q3</th>
+                                        <th class="Header" style="font-weight:bold;">Q4</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_user">
+                                    @{ var currseat = ""; var oldseat = ""; }
+                                    @foreach (var item in Model.tbl_Q7)
+                                    {
+                                        currseat = item.Seat_No;
+                                        for (int i = 1; i <= 3; i++)
+                                        {
+                                            if (oldseat != currseat || oldseat == "")
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>
+                                                        @item.Index_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Seat_No
+                                                    </td>
+                                                    <td>
+                                                        @item.Paper_No
+                                                    </td>
+                                                    @if (i == 1)
+                                                    {
+                                                        <td>
+                                                            Response
+                                                        </td>
+                                                        foreach (var it in Model.tbl_Q7)
+                                                        {
+                                                            if (it.Seat_No == currseat)
+                                                            {
+                                                                <td>
+                                                                    @it.Answer
+                                                                </td>
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @if (i == 2)
+                                                    {
+                                                        <td>
+                                                            Model Answer
+                                                        </td>
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q7)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Answer1
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    @if (i == 3)
+                                                    {
+                                                        <td>
+                                                            Marks
+                                                        </td>
+
+                                                        foreach (var ans in Model.tbl_Model_Answer)
+                                                        {
+                                                            foreach (var it in Model.tbl_Q7)
+                                                            {
+                                                                if (it.Question_ID == ans.ID && it.Seat_No == currseat)
+                                                                {
+                                                                    <td>
+                                                                        @ans.Marks
+                                                                    </td>
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                        oldseat = currseat;
+                                        currseat = "";
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br>
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+        
+    }
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#QuestionType").change(function () {
+          
+            var Question_Type = $("#QuestionType").val();
+
+            if (Question_Type == "Single Correct") {
+                $("#sc").show();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").hide();
+
+            }
+            if (Question_Type == "Double Correct") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").show();
+                $("#tc").hide();
+                $("#th8").hide();
+            }
+            if (Question_Type == "Triple Correct") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").show();
+                $("#th8").hide();
+            }
+            if (Question_Type == "Fill in the Blanks") {
+                $("#sc").hide();
+                $("#fitb").show();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").hide();
+            }
+            if (Question_Type == "True/False") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").show();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").hide();
+            }
+            if (Question_Type == "Match the Following") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").hide();
+            }
+            if (Question_Type == "Rearrange") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").hide();
+            }
+            if (Question_Type == "Theory Question(6M)") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").show();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").hide();
+            }
+            if (Question_Type == "Theory Question(8M)") {
+                $("#sc").hide();
+                $("#fitb").hide();
+                $("#tf").hide();
+                $("#th6").hide();
+                $("#dc").hide();
+                $("#tc").hide();
+                $("#th8").show();
+            }
+        });
+    });
+
+</script>
